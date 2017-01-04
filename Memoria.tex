@@ -73,7 +73,30 @@ Una manera de simular un autómata celular bidimensional es con una cuadricula d
 
 \end{figure}
 
-La ecuación general para el sistemas de reglas que se utiliza para determinar el estado de la célula en la generación siguiente es del tipo $k^{k^s}$ donde $k$ es el número de posibles estados para una célula, y $s$ es el número de células de la vecindad (incluyendo al propia célula) 
+La ecuación general del sistemas de reglas que se utiliza para determinar el estado de la célula en la generación siguiente es del tipo $k^{k^s}$ donde $k$ es el número de posibles estados para una célula, y $s$ es el número de células de la vecindad (incluyendo al propia célula). De esta forma con la vecindad de \textit{Moore} en un sistema de dos dimensiones sería de $2^{2^9}$ el número total de autómatas posibles.\\
+
+Los autómatas celulares se representaban con rejillas finitas en vez de las rejillas infinitas, ya que con la rejilla infinita no se podría realmente trabajar de forma precisa. Pero al utilizar una rejilla finita se presentaba una serie de problemas, el primero de ellos que tratamiento se realiza con las células de los bordes. Las células situadas en los limites de la rejilla ya no cuentan con una vecindad igual que el resto de las células del autómata, de esta forma la función de transición ya no trataría de la misma forma a todas las células. Si aplicamos una función  distinta a las células de los bordes no se estaría tratando tampoco de forma igualitaria a todas las células del autómata. Para este problema se han establecido unas soluciones llamadas ``condiciones frontera'', cada una de ellas esta orientada a solucionar distintos problemas reales del modelado:
+\begin{itemize}
+\item Frontera Abierta: Se considera que fuera de la rejilla residen células, todas con un valor fijo. En el caso particular de que el autómata tenga dos estados en su conjunto $k$, una frontera se dice fría si las células fuera de la frontera se consideran muertas, y caliente si se consideran vivas.
+\item Frontera Periódica: Se considera a la rejilla como si sus extremos se tocaran. En una rejilla de dimensión 1, esto puede visualizarse en dos dimensiones como una circunferencia. En tres dimensiones la rejilla podría visualizarse como un toroide.
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.25]{imagenes/Torus.png}
+\caption{Toroide, rejilla de Frontera Periodica en tres dimensiones.}
+\label{fig:torus}
+
+\end{figure}
+
+\item Frontera Reflectora:  Se considera que las células fuera de la rejilla ``reflejan'' los valores de aquellas dentro de la rejilla. Así, una célula que estuviera junto al borde de la rejilla, por la parte de fuera tomaría como valor el de la célula que esté junto al borde de la rejilla, dentro de ella. 
+
+ \item Sin Frontera: Haciendo uso de implementaciones que hagan crecer dinámicamente el uso de memoria de la rejilla implementada, se puede asumir que cada vez que las células deben interactuar con células fuera de la rejilla, esta se hace más grande para poder dar cabida a estas interacciones. Obviamente, existe un límite (impuesto por la memoria disponible) para esta condición. Es muy importante no confundir esta condición de frontera con la definición original de autómata celular cuya rejilla es inicialmente infinita. En el caso de un autómata celular sin frontera, la rejilla comienza con un tamaño definido y finito, y conforme se requiera va creciendo en el tiempo, lo cual no lo hace necesariamente un modelo más cercano a la realidad, pues si se inicializara la rejilla aleatoriamente, con esta condición sólo se pueden inicializar las células dentro de la rejilla inicial finita, mientras que en el caso de la definición original, en teoría todas las células de la rejilla infinita deberían ser inicializadas.
+\end{itemize}
+
+
+
+
+
 
 Hola \cite{Teoria_von_neumann} hola
 \subsection{Historia}
