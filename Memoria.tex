@@ -52,12 +52,28 @@ Aun así hay todavía un amplio grupo de sistemas que es imposible modelar con e
 
 
 
-\subsection{Que son los Autómatas Celulares}
+\section{Autómatas Celulares}
 Aunque no existe una definición formal sobre que es un Autómata Celular entendemos que es estudio de modelado discreto para un sistema que evoluciona en generaciones o iteraciones discretas. Es recomendable utilizar esta técnica cuando se tiene un sistema con una colección masiva de objetos simples que interactúan unos con otros de forma aleatoria y por ello es utilizado en la teoría de la computación, las matemáticas, la física, las ciencias complejas, etc. \\
 
-Un Autómata Celular consiste en una rejilla regular de celdas, donde cada celda se conoce como célula y representa un estado del conjunto de estados disponibles del sistema. Cada celda puede tomar un valor de un rango de valores definidos para este sistema en particular, siempre que el valor sea discreto y perteneciente al conjunto de los reales. Además cada celda viene definida por su ``vecindario'', es decir, el conjunto finito de las células adyacentes a una célula en concreto.  La rejilla va cambiando en el tiempo y actualizando el estado de sus células, a cada instante de tiempo se le denomina generación y el estado de las células en una generación no varía.  
+Un Autómata Celular consiste en una rejilla regular de celdas, donde cada celda se conoce como célula y representa un estado del conjunto de estados disponibles del sistema. Cada celda puede tomar un valor de un rango de valores definidos para este sistema en particular, siempre que el valor sea discreto y perteneciente al conjunto de los reales. Además cada celda viene definida por su ``vecindario'', entendemos por vecindario al conjunto finito de las células adyacentes a una célula en concreto.  La rejilla va cambiando en el tiempo y actualizando el estado de sus células, a cada instante de tiempo se le denomina generación y el estado de las células en una generación no varía.  \\
 
-La forma de considerar la adyacencia varía dependiendo del modelo y la versión de la técnica que se utilice.
+
+En el autómata celular cuando se avanza de generación, se actualiza el valor de todas las células del autómata aplicando una función de transición (``evolución''), que avanza el autómata al estado siguiente. Esta función de transición viene determinada por una ecuación matemática que toma como argumentos los valores de la vecindad de la célula además de del valor de la propia célula, siempre se aplica de forma homogénea y para cada paso discreto del tiempo.\\
+
+Una manera de simular un autómata celular bidimensional es con una cuadricula de tamaño infinito. Cada célula tiene dos posible estados, blanco y negro. La vecindad de la célula se define por una regla en concreto, ya que la forma de considerar la adyacencia varía dependiendo del modelo y la versión del autómata que se utilice. Los tipos más comunes de vecindad son los que definieron el propio \textit{Neumann} y \textit{Moore} y que se apodaron igual que sus autores. El vecindario definido por \textit{Von Neumann} se define como el conjunto de cuatro células que rodean ortogonalmente a una célula central, hay una variante de este vecindario que es una variante de este, la zona ampliada de \textit{Von Neumann} que consiste en ampliar el vecindario a las ocho células que rodean ortogonalmente a la célula central. El vecindario definido por \textit{Moore} consiste en las ocho células adyacentes que rodean a una célula central.\\
+
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.5]{imagenes/CA_Neumann.png}
+\hspace{2cm}
+\includegraphics[scale=0.5]{imagenes/CA-Moore.png}
+\caption{Vecindad en color rojo de la célula azul de forma gráfica, izquierda vecindad ampliada de Von Neumann y derecha vecindad de Moore}
+\label{fig:vecindad}
+
+\end{figure}
+
+La ecuación general para el sistemas de reglas que se utiliza para determinar el estado de la célula en la generación siguiente es del tipo $k^{k^s}$ donde $k$ es el número de posibles estados para una célula, y $s$ es el número de células de la vecindad (incluyendo al propia célula) 
 
 Hola \cite{Teoria_von_neumann} hola
 \subsection{Historia}
