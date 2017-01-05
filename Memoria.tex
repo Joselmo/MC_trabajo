@@ -29,7 +29,7 @@
 %----------------------------------------------------------------------
 \begin{abstract} 
 % INCOMPLETO!!!!!
-Se ha realizado un trabajo sobre los autómatas celulares desarrollados en la época de los 60 por \textit{Von Neumann}. La teoría de los autómatas celulares ha ido cambiando durante su vida con diferentes vertientes y multitud de variaciones pero nos centraremos en solo dos versiones más a parte de la de Von Neumann.
+Se ha realizado un trabajo sobre los Autómatas Celulares desarrollados en la época de los 60 por \textit{Von Neumann}. La teoría de los Autómatas Celulares ha ido cambiando durante su vida con diferentes vertientes y multitud de variaciones pero nos centraremos en solo dos versiones más a parte de la de Von Neumann.
 
 % IDEA BASICA Y GENERAL - HAY QUE HACERLO BIEN!!!!!!!!
 
@@ -44,7 +44,7 @@ Se ha realizado un trabajo sobre los autómatas celulares desarrollados en la é
 
 %
 
-Para poder entender que son los autómatas celulares primero debemos comprender de donde viene la necesidad de crearlos, tanto a los propios autómatas como a su teoría que los sostiene. En la historia del ser humano y las ciencias se ha perseguido el modelamiento del mundo y todos sus fenómenos que ocurren en el, en concreto de los sistemas físicos, eléctricos y mecánicos mediante el uso de los modelos matemáticos. Matemáticamente hablando estos fenómenos de la naturales son sistemas de naturaleza continua y han sido tratados con ecuaciones diferenciales, integrales funcionales y variables de estado entre otros procedimientos matemáticos para su modelamiento. También están los modelos aproximados y discretos que ofrecen una teoría muy cercana a la realidad con la ventaja de utilizar valores finitos. Para ello se ha utilizado la discretización y la digitalización de sistemas.\\
+Para poder entender que son los Autómatas Celulares primero debemos comprender de donde viene la necesidad de crearlos, tanto a los propios autómatas como a su teoría que los sostiene. En la historia del ser humano y las ciencias se ha perseguido el modelamiento del mundo y todos sus fenómenos que ocurren en el, en concreto de los sistemas físicos, eléctricos y mecánicos mediante el uso de los modelos matemáticos. Matemáticamente hablando estos fenómenos de la naturales son sistemas de naturaleza continua y han sido tratados con ecuaciones diferenciales, integrales funcionales y variables de estado entre otros procedimientos matemáticos para su modelamiento. También están los modelos aproximados y discretos que ofrecen una teoría muy cercana a la realidad con la ventaja de utilizar valores finitos. Para ello se ha utilizado la discretización y la digitalización de sistemas.\\
 
 Una de las técnicas matemáticas complejas para el modelado de sistemas físicos y mecánicos es el \textit{Método de los Elementos Finitos} (FEM), cuya finalidad es discretizar espacios de naturaleza contínua, sobre los cuales es posible realizar análisis numéricos para comprender, por medio de un modelo discreto, el comportamiento de sistemas analógicos. Pero esta técnica resulta muy compleja de aplicar por su dificultad para poder lograr modelos que describan sus comportamientos de forma precisa. Esta técnica (FEM) tiene una alta aplicación en el análisis de sistemas y espacios físicos-mecánicos donde el objetivo del modelo es comprender el comportamiento del sistema en el ambito de la resistencia de los materiales, la dinámica de partículas y en general el comportamiento con la interacción  de los elementos base del sistema en el espacio donde reside.
 Aun así hay todavía un amplio grupo de sistemas que es imposible modelar con estas técnicas debido a diversos motivos, como por ejemplo, sistemas químicos, biológicos, evolutivos, eléctricos, computacionales e inclusive otros sistemas físicos y mecánicos. Para estos sistemas que no se podían modelar con FEM han aparecido a lo largo de la historia diferentes técnicas para obtener su modelo continuo, una de ellas fue el modelado con \textit{Autómata Celular}.
@@ -75,7 +75,7 @@ Una manera de simular un autómata celular bidimensional es con una cuadricula d
 
 La ecuación general del sistemas de reglas que se utiliza para determinar el estado de la célula en la generación siguiente es del tipo $k^{k^s}$ donde $k$ es el número de posibles estados para una célula, y $s$ es el número de células de la vecindad (incluyendo al propia célula). De esta forma con la vecindad de \textit{Moore} en un sistema de dos dimensiones sería de $2^{2^9}$ el número total de autómatas posibles.\\
 
-Los autómatas celulares se representaban con rejillas finitas en vez de las rejillas infinitas, ya que con la rejilla infinita no se podría realmente trabajar de forma precisa. Pero al utilizar una rejilla finita se presentaba una serie de problemas, el primero de ellos que tratamiento se realiza con las células de los bordes. Las células situadas en los limites de la rejilla ya no cuentan con una vecindad igual que el resto de las células del autómata, de esta forma la función de transición ya no trataría de la misma forma a todas las células. Si aplicamos una función  distinta a las células de los bordes no se estaría tratando tampoco de forma igualitaria a todas las células del autómata. Para este problema se han establecido unas soluciones llamadas ``condiciones frontera'', cada una de ellas esta orientada a solucionar distintos problemas reales del modelado:
+Los Autómatas Celulares se representaban con rejillas finitas en vez de las rejillas infinitas, ya que con la rejilla infinita no se podría realmente trabajar de forma precisa. Pero al utilizar una rejilla finita se presentaba una serie de problemas, el primero de ellos que tratamiento se realiza con las células de los bordes. Las células situadas en los limites de la rejilla ya no cuentan con una vecindad igual que el resto de las células del autómata, de esta forma la función de transición ya no trataría de la misma forma a todas las células. Si aplicamos una función  distinta a las células de los bordes no se estaría tratando tampoco de forma igualitaria a todas las células del autómata. Para este problema se han establecido unas soluciones llamadas ``condiciones frontera'', cada una de ellas esta orientada a solucionar distintos problemas reales del modelado:
 \begin{itemize}
 \item Frontera Abierta: Se considera que fuera de la rejilla residen células, todas con un valor fijo. En el caso particular de que el autómata tenga dos estados en su conjunto $k$, una frontera se dice fría si las células fuera de la frontera se consideran muertas, y caliente si se consideran vivas.
 \item Frontera Periódica: Se considera a la rejilla como si sus extremos se tocaran. En una rejilla de dimensión 1, esto puede visualizarse en dos dimensiones como una circunferencia. En tres dimensiones la rejilla podría visualizarse como un toroide.
@@ -85,7 +85,6 @@ Los autómatas celulares se representaban con rejillas finitas en vez de las rej
 \includegraphics[scale=0.25]{imagenes/Torus.png}
 \caption{Toroide, rejilla de Frontera Periodica en tres dimensiones.}
 \label{fig:torus}
-
 \end{figure}
 
 \item Frontera Reflectora:  Se considera que las células fuera de la rejilla ``reflejan'' los valores de aquellas dentro de la rejilla. Así, una célula que estuviera junto al borde de la rejilla, por la parte de fuera tomaría como valor el de la célula que esté junto al borde de la rejilla, dentro de ella. 
@@ -95,14 +94,31 @@ Los autómatas celulares se representaban con rejillas finitas en vez de las rej
 
 
 \section{Historia}
-En al historia de los autómatas celulares se remonta a la década de los 40, cuando fue desarrollada su teoría por \textit{Von Neumann} y descrita en su libro ``The Theory of Self-reproducing Automata'' \cite{Teoria_von_neumann}.
-A partir de entonces la teoría original ha vivido tres grandes etapas por grandes matemáticos d 
+La historia de los Autómatas Celulares se remonta a la década de los 40, cuando fue desarrollada su teoría por \textit{Von Neumann} y descrita en su libro ``The Theory of Self-reproducing Automata'' \cite{Teoria_Von_neumann}.
+A partir de entonces la teoría original ha vivido tres grandes etapas por grandes matemáticos que aportaron cada uno de ellos un nuevo enfoque o una nueva característica importante en la teoría de los Autómatas Celulares.
+Vamos a describir como fue la evolución en estas tres etapas de forma cronológica. 
 
 %--------------------------------------------------------------------------
 %	Era de Von Neumann
 %--------------------------------------------------------------------------
 
 \section{Era de Von Neumann} % 
+John Von Neumann trabajaba en el Laboratorio Nacional Los Álamos junto a su amigo físico y científico de la computación Stanislaw Ulam. Neumann quería desarrollar robots que pudieran 
+\begin{wrapfigure}{l}{0.4\linewidth}
+\centering
+\includegraphics[scale=3]{imagenes/neumann.png}
+\caption{John Von Neumann}
+\label{fig:neumann}
+\end{wrapfigure}
+autoreplicarse, es decir, robots que se pudiera reproducirse a si mismos, pero pronto de dio cuenta de altísima dificultad que suponía crear un robot que pudiera crear a su vez otros robots. La máquina tendría un coste de prestaciones muy elevado y requeriría una infinidad de piezas para poder construirse. Ulam que estaba estudiando el crecimiento de los cristales utilizando una red de celosía como modelo, ayudo a Neumann con el problema que se le había presentado sugiriéndole que utilizara un sistema discreto para crear un modelo reduccionista de autoreplicación. Además Neumann leyó un documento de Simposio Hixon titulado ``The general and logical theory of automata'' el cual le sirvió para desarrollar y publicar su teoría de Autómatas Celulares en su trabajo \cite{Teoria_Von_neumann} a finales de los años 40. \\
+
+Esta primera teoría les sirvió a Ulam y Neumann para crear un método que calcula el movimiento de liquido. El concepto fundamental del método fue tratar el liquido como un conjunto de unidades discretas, finito y muy grande de pequeños elementos más simples cuyo comportamiento dependía de los elementos que lo rodeaban de esta forma se creó el primer autómata celular en la década de los cincuenta. Al igual que la red de celosía que estudiaba Ulam, los Autómatas Celulares de Neumann son bidimensionales, con su autoreplicación implementado de forma algorítmica. El resultado fue un autómata celular que en su interior creaba copias dentro de su sistema y con 29 estados por célula, de esta forma dio una prueba de la existencia de un patrón que podría hacer infinidad de copias de sí mismo dentro del su propio universo de células. Este diseño se le llamo ``constructor universal de Von Neumann''.\\
+
+A partir de entonces los Autómatas Celulares fueron amplia mente estudiados por por varios científicos de la época.
+En la década de 1960, fueron estudiados como un tipo particular de sistema dinámico y se estableció también una conexión con el campo matemático de la dinámica simbólica. En 1969, Gustav A. Hedlund realizo una compilación de estudios matemáticos de los Autómatas Celulares, un documento fundamental a partir de entonces. El resultado más importante fue la caracterización en el teorema de Curtis-Hedlund-Lyndon del conjunto de reglas globales de los Autómatas Celulares como el conjunto de continuos endomorfismos de espacios de turno.\\
+
+También en 1969 el informático Alvy Ray Smith\cite{alvy} completó una tesis doctoral de Stanford en Teoría de Autómatas Celulares, el primer tratamiento matemático de los Autómatas Celulares enfocado al mundo de la ciencia de la computación y a los ordenadores en general. Muchos artículos posteriores vinieron de esta tesis: Mostró la equivalencia de los vecindarios de diversas formas, como reducir una vecindad de Moore a una vecindad de Von Neumann o cómo reducir cualquier zona de una vecindad de Von Neumann.
+
 
 %--------------------------------------------------------------------------
 %	Era de John Horton Conway
