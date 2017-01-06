@@ -161,7 +161,14 @@ A pesar de su simplicidad, el sistema logra una impresionante diversidad de comp
 %--------------------------------------------------------------------------
 
 \section{Era de Stephen Wolfram} % 
-\textit{Stephen Wolfram} comenzó a trabajar de forma independiente en autómatas celulares a mediados de 1981, después de considerar cómo los patrones complejos aparecían en la naturaleza. Sus investigaciones fueron impulsadas inicialmente por un interés en los sistemas de modelado, tales como las redes neuronales. Él publicó su primer artículo en ``Reviews of Modern Physics'' donde investiga los autómatas celulares elementales ( Regla 30 en particular) en junio de 1983. La inesperada complejidad del comportamiento de estas reglas simples llevó a \textit{Wolfram} a sospechar que la complejidad en la naturaleza puede ser debido a mecanismos similares. Durante este período de \textit{Wolfram} formuló los conceptos de la intrínseca aleatoriedad y la irreductibilidad computacional , y sugirió que la regla 110 puede ser universal, hecho fue demostrado por asistente de investigación Mateo Cook, en la década de 1990. Durante su investigación tras múltiples simulaciones de diferentes Autómatas Celulares, estableció la siguiente clasificación de los mismos en virtud del comportamiento manifestado en los diagramas de evolución \cite{wolfram}:
+\textit{Stephen Wolfram} comenzó a trabajar de forma independiente en autómatas celulares a mediados de 1981, después de considerar cómo los patrones complejos aparecían en la naturaleza. 
+\begin{wrapfigure}{l}{0.4\linewidth}
+\centering
+\includegraphics[scale=0.3]{imagenes/stephen.png}
+\caption{Stephen Wolfram}
+\label{fig:neumann}
+\end{wrapfigure}
+Sus investigaciones fueron impulsadas inicialmente por un interés en los sistemas de modelado, tales como las redes neuronales. Él publicó su primer artículo en ``Reviews of Modern Physics'' donde investiga los autómatas celulares elementales ( Regla 30 en particular) en junio de 1983. La inesperada complejidad del comportamiento de estas reglas simples llevó a \textit{Wolfram} a sospechar que la complejidad en la naturaleza puede ser debido a mecanismos similares. Durante este período de \textit{Wolfram} formuló los conceptos de la intrínseca aleatoriedad y la irreductibilidad computacional , y sugirió que la regla 110 puede ser universal, hecho fue demostrado por asistente de investigación Mateo Cook, en la década de 1990. Durante su investigación tras múltiples simulaciones de diferentes Autómatas Celulares, estableció la siguiente clasificación de los mismos en virtud del comportamiento manifestado en los diagramas de evolución \cite{wolfram}:
 \begin{itemize}
 \item \textit{Autómata Celular de Clase 1}: son aquellos que evolucionan a estados homogéneos o constantes, es decir, o todo ceros, o todo unos. Además, dicha evolución es independiente de la configuración inicial considerada.
 \item \textit{Autómata Celular de Clase 2}: son los autómatas que dan lugar a conjuntos de estructuras periódicas y estables. En ellos la evolución del estado de una determinada célula a lo largo del tiempo estará influida por los estados de un grupo fijo de células de la configuración inicial.
@@ -177,6 +184,53 @@ A pesar de su simplicidad, el sistema logra una impresionante diversidad de comp
 \end{figure}
 
 En la figura superior se puede apreciar claramente de forma visual los tipos de clases que estableció \textit{Wolfram}
+
+
+%--------------------------------------------------------------------------
+%	Reglas de AC 
+%--------------------------------------------------------------------------
+
+\section{Reglas del Autómata} % 
+Wolfram también definió un sistema de reglas o de notación consistente en asignar un numero natural de 0 a 255 a un Autómata Celular de la siguiente forma.\\
+
+Considerando el caso particular de los Autómatas Celulares definidos de modo que su conjunto de estados es $S = \mathbb{Z}_2$ y el radio de la vecindad es $r = 1$. Para este caso particular de un Autómata Celular, el número de reglas de transición existentes es, según se menciono en la definición, de $2^{2^{2r+1}} = 2^8 = 256$ reglas de transición. Dado que $r = 1$ la vecindad de una célula está formada por ella misma, la célula a su izquierda y la célula situada a su derecha. Como el conjunto de estados es $\mathbb{Z}_2$, los dos estados en que puede encontrarse una célula son 0 ó 1. Consecuentemente existen $2^3 = 8$ posibles configuraciones de la vecindad de una célula dada, a saber: \\
+$$111 \qquad 110 \qquad 101 \qquad 100 \qquad 011 \qquad 010 \qquad 001 \qquad 000$$
+
+El primer dígito de cada configuración representa el estado de la célula de la izquierda, el dígito centra el estado de la célula de cuya vecindad hablamos y el último dígito hace referencia al estado de la célula de la derecha. Es claro que toda regla de transición consiste en asignar a cada una de estas posibles configuraciones de la vecindad un elemento de $\mathbb{Z}_2$. El número a asignar a una regla de transición se calculará de la siguiente forma:
+\begin{enumerate}
+ \item Se aplica la regla de transición a cada una de las 8 configuraciones anteriores,
+ \item Se concatenan los bits obtenidos,
+ \item Se interpreta dicha concatenación como un número en base 2 y
+ \item Se considera la expresión decimal de dicho número.
+\end{enumerate}
+
+El número así obtenido se denomina el \textit{número de Wolfram} de la regla de transición considerada. Un ejemplo de esta regla sería:\\
+
+Consideremos un Autómata Celular de $n = 11$ células, en el que $k = 2$ y $r = 1$. El conjunto de estado se este autómata celular es $\mathbb{Z}$ y la vecindad ya mencionada, además la regla de transición se rige por la siguiente expresión:
+$$a_1^{t+1} = \lbrace a_{i-1}^t + a_{1}^t +a_{i+1}^t \rbrace mod 2, \qquad i \geq 0.  $$
+Si el estado inicial del Autómata Celular es definido por la siguiente configuración
+$$C^0 = (0,0,0,0,0,1,0,0,0,0,0)$$
+
+calculando 8 generaciones sucesivas según la función de transición considerada, se obtiene la tabla de evolución siguiente:
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.7]{imagenes/ejemplo_1.png}
+\end{figure}
+
+Ahora si se sustituye cada elemento numérico por un cuadrado de color dependiendo de si la célula esta viva, color negro, o muerta, color blanco, tal como se hacia en el juego de la vida de \textit{Conway}, se obtiene una tabla en la que se muestra el diagrama de evolución de este Autómata Celular para 8 generaciones
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.7]{imagenes/ejemplo_2.png}
+\end{figure}
+
+Para observar de forma más detallada la evolución de este Autómata Celular con la configuración inicial dada, se puede proceder a determinar, por ejemplo, las 50 primeras iteraciones. Llevando a cabo un proceso similar al anterior, de modo que sustituimos los 0 y 1 por cuadrados blancos y negros, obteniendo un diagrama de evolución como el de la siguiente figura:
+ 
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.7]{imagenes/ejemplo_3.png}
+\end{figure}
 
 
 %--------------------------------------------------------------------------
