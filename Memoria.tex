@@ -125,6 +125,35 @@ También en 1969 el informático Alvy Ray Smith\cite{alvy} completó una tesis d
 %--------------------------------------------------------------------------
 
 \section{Era de John Horton Conway} % 
+Los autómatas celulares tuvieron una gran expansión gracias a \textit{John Horton Conway} que en 1970 dio a conocer el autómata celular que probablemente sea el más conocido: el Juego de la vida (Life), publicado por Martin Gardner en su columna ``Mathematical Games'' en la revista ``Scientific American''. El Juego de la Vida consiste en una cuadrícula bidimensional con dos estados donde se coloca al inicio un patrón de células ``vivas'', representadas por una celda de color negro o ``muertas'', representadas por una celda de color blanco. 
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.6]{imagenes/life_1.png}
+\hspace{2cm}
+\includegraphics[scale=0.6]{imagenes/life_2.png}
+\caption{Ejemplos de patrones del Juego de la Vida}
+\label{fig:patrones}
+\end{figure}
+
+
+La vecindad para cada célula son ocho: los vecinos formados por la vecindad de  Moore. De manera repetida, se aplican simultáneamente sobre todas las células de la cuadrícula las siguientes 3 reglas:
+
+\textit{Nacimiento}: se reemplaza una célula muerta por una viva si dicha célula tiene exactamente 3 vecinos vivos.\\
+\textit{Muerte}: se reemplaza una célula viva por una muerta si dicha célula no tiene más de 1 vecino vivo (muerte por aislamiento) o si tiene más de 3 vecinos vivos (muerte por sobrepoblación).\\
+\textit{Supervivencia}: una célula viva permanecerá en ese estado si tiene 2 o 3 vecinos vivos.\\
+
+El juego hizo inmediatamente famoso Conway, pero también abrió un nuevo campo de investigación matemática en el campo de los autómatas celulares. Debido a las analogías de la vida con el ascenso, caída y transformaciones de una sociedad de organismos vivos, que pertenece a una creciente clase de juegos denominados "juegos de simulación" (juegos que se asemejan a los procesos de la vida real).\\
+
+A pesar de su simplicidad, el sistema logra una impresionante diversidad de comportamientos, fluctuando entre aparente aleatoriedad y el orden. Una de las características más evidentes de juego de la vida es la frecuente aparición de planeadores o ``Gliders'', que son un tipo de patrón que se desplaza por la cuadricula de forma continua , los arreglos de células que se mueven esencialmente a sí mismos a través de la rejilla. Es posible disponer el autómata para que los planeadores interactúen para realizar cálculos, y después de mucho esfuerzo se ha demostrado que el juego de la vida puede emular  la máquina de Turing.
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=1]{imagenes/planeador.png}
+\caption{Patrón planeador en sus cuatro generaciones}
+\label{fig:planeador}
+\end{figure}
+
 
 
 %--------------------------------------------------------------------------
@@ -132,6 +161,23 @@ También en 1969 el informático Alvy Ray Smith\cite{alvy} completó una tesis d
 %--------------------------------------------------------------------------
 
 \section{Era de Stephen Wolfram} % 
+\textit{Stephen Wolfram} comenzó a trabajar de forma independiente en autómatas celulares a mediados de 1981, después de considerar cómo los patrones complejos aparecían en la naturaleza. Sus investigaciones fueron impulsadas inicialmente por un interés en los sistemas de modelado, tales como las redes neuronales. Él publicó su primer artículo en ``Reviews of Modern Physics'' donde investiga los autómatas celulares elementales ( Regla 30 en particular) en junio de 1983. La inesperada complejidad del comportamiento de estas reglas simples llevó a \textit{Wolfram} a sospechar que la complejidad en la naturaleza puede ser debido a mecanismos similares. Durante este período de \textit{Wolfram} formuló los conceptos de la intrínseca aleatoriedad y la irreductibilidad computacional , y sugirió que la regla 110 puede ser universal, hecho fue demostrado por asistente de investigación Mateo Cook, en la década de 1990. Durante su investigación tras múltiples simulaciones de diferentes Autómatas Celulares, estableció la siguiente clasificación de los mismos en virtud del comportamiento manifestado en los diagramas de evolución \cite{wolfram}:
+\begin{itemize}
+\item \textit{Autómata Celular de Clase 1}: son aquellos que evolucionan a estados homogéneos o constantes, es decir, o todo ceros, o todo unos. Además, dicha evolución es independiente de la configuración inicial considerada.
+\item \textit{Autómata Celular de Clase 2}: son los autómatas que dan lugar a conjuntos de estructuras periódicas y estables. En ellos la evolución del estado de una determinada célula a lo largo del tiempo estará influida por los estados de un grupo fijo de células de la configuración inicial.
+\item \textit{Autómata Celular de Clase 3}: son todos aquellos autómatas celulares cuyo comportamiento se vuelve caótico con el paso del tiempo, de tal forma que el cambio de estado de una célula va a depender cada vez más de una mayor número de estados iniciales. Se ha conjeturado que el cálculo de dichos estados se puede hacer mediante un simple algoritmo
+\item \textit{Autómata Celular de Clase 4}: son aquellos que dan lugar a estructuras complejas, las cuales pueden permanecer localizadas en el espacio o bien moverse a lo largo del mismo. Es esta clase, la evolución del estado de una célula en particular dependerá de una gran cantidad de estados iniciales, de manera que la determinación exacta de dicho estado es un problema cuya complejidad es equivalente a la propia simulación explicita del Autómata Celular.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.7]{imagenes/AutomatasCelulares_WolframClasses.png}
+\caption{Ejemplos de Autómatas Celulares de cada clase.}
+\label{fig:clase}
+\end{figure}
+
+En la figura superior se puede apreciar claramente de forma visual los tipos de clases que estableció \textit{Wolfram}
+
 
 %--------------------------------------------------------------------------
 %	Aplicaciones Actuales 
