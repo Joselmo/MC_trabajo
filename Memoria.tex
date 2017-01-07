@@ -94,6 +94,39 @@ Los Autómatas Celulares se representaban con rejillas finitas en vez de las rej
 \end{itemize}
 
 
+\subsection{Autómatas Celulares Lineales}
+Unos de los Autómatas Celulares más utilizados y comunes son los denominados Autómatas Celulares lineales. Llamados así por que utilizan solo una dimensión, es decir, sus células están dispuestas una a continuación de otra a modo de una cadena. Si el autómata celular lineal consta de n células, cada una de ellas se nombrará por $\langle i \rangle$ con $ 0 = \leq i \leq n-1 $. Por ejemplo, un autómata celular lineal con cinco células sería:
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.7]{imagenes/name_cell.png}
+\label{fig:lineal_1}
+\end{figure}
+
+Si, además, $S_k$ es el conjunto de $k$ estados y $a_i^t \in S_k, \enspace 0 \leq i \leq n-1$, es el estado de la célula $\langle i \rangle$ en e instante $t$, entonces se denomina ``\textit{configuración del Autómata Celular en el instate $t$}'' y se denota por $C^t$ al siguiente vector:
+$$C^t = \enspace \big( a_0^t,a_1^t, ..., a_{n-1}^t \big) \in S_k x ... n ... x S_k$$
+
+La evolución de un autómata celular a lo largo del tiempo se representa de forma sencilla sin más que escribir las sucesivas configuraciones de sus células, una debajo de otra, a lo que llamaremos diagrama de evolución del autómata celular. A continuación se muestra un ejemplo del diagrama de evolución de un autómata celular de 5 células.
+
+\begin{table}[H]
+\centering
+\begin{tabular}{lllllll}
+\cline{1-5}
+\multicolumn{1}{|l|}{$a_0^0$} & \multicolumn{1}{l|}{$a_0^1$} & \multicolumn{1}{l|}{$a_0^2$} & \multicolumn{1}{l|}{$a_0^3$} & \multicolumn{1}{l|}{$a_0^4$} & $\rightarrow$ & $C^0$ \\ \cline{1-5}
+\multicolumn{1}{|l|}{$a_1^0$} & \multicolumn{1}{l|}{$a_1^1$} & \multicolumn{1}{l|}{$a_1^2$} & \multicolumn{1}{l|}{$a_1^3$} & \multicolumn{1}{l|}{$a_1^4$} & $\rightarrow$ & $C^1$ \\ \cline{1-5}
+\multicolumn{1}{|l|}{$a_2^0$} & \multicolumn{1}{l|}{$a_2^1$} & \multicolumn{1}{l|}{$a_2^2$} & \multicolumn{1}{l|}{$a_2^3$} & \multicolumn{1}{l|}{$a_2^4$} & $\rightarrow$ & $C^2$ \\ \cline{1-5}
+ &  & \multicolumn{1}{c}{...} &  &  &  & \multicolumn{1}{c}{...}
+\end{tabular}
+\end{table}
+
+Denotaremos por $V_i$ a la vecindad de la célula i-ésima, es decir al conjunto de células cuyo estado va a influir en el de la célula $i$ según la regla de transición que se considere. La vecindades más comunes en los autómatas celulares lineales son de carácter simétrico, de modo que la célula i-ésima es la célula central. Estas vecindades pueden escribirse de la siguiente manera:
+$$V_i (r) = \lbrace (i-r), ... ,(i-1),(i),(i+1), ... ,(i+r)\rbrace$$
+
+donde $r$ recibe el nombre de ``radio de la vecindad''. Existen otros tipos de vecindades no simétricas como las arbitrarias que tiene la forma:
+$$V_i = \lbrace (i-u), (i), (i+v) \rbrace \mid u,v \in \mathbb{N} \enspace y \enspace u \ne v$$
+
+Dada una célula $i$, con $i < r$ ó $i > n-r $, la determinación de la vecindad $V_i(r)$ queda restringida a determinadas condiciones de contorno del autómata celular lineal.
+
 \section{Historia}
 La historia de los Autómatas Celulares se remonta a la década de los 40, cuando fue desarrollada su teoría por \textit{Von Neumann} y descrita en su libro ``The Theory of Self-reproducing Automata'' \cite{Teoria_Von_neumann}.
 A partir de entonces la teoría original ha vivido tres grandes etapas por grandes matemáticos que aportaron cada uno de ellos un nuevo enfoque o una nueva característica importante en la teoría de los Autómatas Celulares.
@@ -103,7 +136,7 @@ Vamos a describir como fue la evolución en estas tres etapas de forma cronológ
 %	Era de Von Neumann
 %--------------------------------------------------------------------------
 
-\section{Era de Von Neumann} % 
+\subsection{Era de Von Neumann} % 
 John Von Neumann trabajaba en el Laboratorio Nacional Los Álamos junto a su amigo físico y científico de la computación Stanislaw Ulam. Neumann quería desarrollar robots que pudieran 
 \begin{wrapfigure}{l}{0.4\linewidth}
 \centering
@@ -111,7 +144,7 @@ John Von Neumann trabajaba en el Laboratorio Nacional Los Álamos junto a su ami
 \caption{John Von Neumann}
 \label{fig:neumann}
 \end{wrapfigure}
-autoreplicarse, es decir, robots que se pudiera reproducirse a si mismos, pero pronto de dio cuenta de altísima dificultad que suponía crear un robot que pudiera crear a su vez otros robots. La máquina tendría un coste de prestaciones muy elevado y requeriría una infinidad de piezas para poder construirse. Ulam que estaba estudiando el crecimiento de los cristales utilizando una red de celosía como modelo, ayudo a Neumann con el problema que se le había presentado sugiriéndole que utilizara un sistema discreto para crear un modelo reduccionista de autoreplicación. Además Neumann leyó un documento de Simposio Hixon titulado ``The general and logical theory of automata'' el cual le sirvió para desarrollar y publicar su teoría de Autómatas Celulares en su trabajo \cite{Teoria_Von_neumann} a finales de los años 40. \\
+autoreplicarse, es decir, robots que se pudiera reproducirse a si mismos, pero pronto se dio cuenta de la altísima dificultad que suponía crear un robot que pudiera crear a su vez otros robots. La máquina tendría un coste de prestaciones muy elevado y requeriría una infinidad de piezas para poder construirse. Ulam que estaba estudiando el crecimiento de los cristales utilizando una red de celosía como modelo, ayudo a Neumann con el problema que se le había presentado sugiriéndole que utilizara un sistema discreto para crear un modelo reduccionista de autoreplicación. Además Neumann leyó un documento de Simposio Hixon titulado ``The general and logical theory of automata'' el cual le sirvió para desarrollar y publicar su teoría de Autómatas Celulares en su trabajo \cite{Teoria_Von_neumann} a finales de los años 40. \\
 
 Esta primera teoría les sirvió a Ulam y Neumann para crear un método que calcula el movimiento de liquido. El concepto fundamental del método fue tratar el liquido como un conjunto de unidades discretas, finito y muy grande de pequeños elementos más simples cuyo comportamiento dependía de los elementos que lo rodeaban de esta forma se creó el primer autómata celular en la década de los cincuenta. Al igual que la red de celosía que estudiaba Ulam, los Autómatas Celulares de Neumann son bidimensionales, con su autoreplicación implementado de forma algorítmica. El resultado fue un autómata celular que en su interior creaba copias dentro de su sistema y con 29 estados por célula, de esta forma dio una prueba de la existencia de un patrón que podría hacer infinidad de copias de sí mismo dentro del su propio universo de células. Este diseño se le llamo ``constructor universal de Von Neumann''.\\
 
@@ -125,7 +158,7 @@ También en 1969 el informático Alvy Ray Smith\cite{alvy} completó una tesis d
 %	Era de John Horton Conway
 %--------------------------------------------------------------------------
 
-\section{Era de John Horton Conway} % 
+\subsection{Era de John Horton Conway} % 
 Los autómatas celulares tuvieron una gran expansión gracias a \textit{John Horton Conway} que en 1970 dio a conocer el autómata celular que probablemente sea el más conocido: el Juego de la vida (Life), publicado por Martin Gardner en su columna ``Mathematical Games'' en la revista ``Scientific American''. El Juego de la Vida consiste en una cuadrícula bidimensional con dos estados donde se coloca al inicio un patrón de células ``vivas'', representadas por una celda de color negro o ``muertas'', representadas por una celda de color blanco. 
 
 \begin{figure}[H]
@@ -161,7 +194,7 @@ A pesar de su simplicidad, el sistema logra una impresionante diversidad de comp
 %	Era de Stephen Wolfram
 %--------------------------------------------------------------------------
 
-\section{Era de Stephen Wolfram} % 
+\subsection{Era de Stephen Wolfram} % 
 \textit{Stephen Wolfram} comenzó a trabajar de forma independiente en autómatas celulares a mediados de 1981, después de considerar cómo los patrones complejos aparecían en la naturaleza. 
 \begin{wrapfigure}{l}{0.4\linewidth}
 \centering
@@ -264,7 +297,7 @@ Los diagramas de evolución de cada uno de los dos Autómatas Celulares anterior
 \caption{Diagrama de evolución del Autómata Celular de regla 45}
 \end{figure}
 
-Para este diagrama se han considerado 50 generaciones para cada autómata celular con la misma configuración inicial. Se podría pensar en utilizar estos dos Autómatas Celulares como generadores pseoudoaleatorios sin más que considerar como semilla a la configuración inicial y tomar como salida la lista de ceros y unos definida por la última configuración. Sin embargo, hacerlo así supondría que se generaría una lsita de tantos bits  como bits de partida, dado que el número de células de todas las configuraciones es el mismo, por lo que este procedimiento no parace adecuado. Si lo que se desea es obtener una secuencia de bits cuya longitud sea mucho mayor que la longitud de la semilla o configuración inicial, es conveniente considerar como secuencia de salida la evolución de una de las células del Autómata. Con ello sólo haría falta conocer el estado inicial de unas pocas células e iterar el Autómata Celular tantas veces como bits se requieran.\\
+Para este diagrama se han considerado 50 generaciones para cada autómata celular con la misma configuración inicial. Se podría pensar en utilizar estos dos Autómatas Celulares como generadores pseoudoaleatorios sin más que considerar como semilla a la configuración inicial y tomar como salida la lista de ceros y unos definida por la última configuración. Sin embargo, hacerlo así supondría que se generaría una lista de tantos bits  como bits de partida, dado que el número de células de todas las configuraciones es el mismo, por lo que este procedimiento no parece adecuado. Si lo que se desea es obtener una secuencia de bits cuya longitud sea mucho mayor que la longitud de la semilla o configuración inicial, es conveniente considerar como secuencia de salida la evolución de una de las células del Autómata. Con ello sólo haría falta conocer el estado inicial de unas pocas células e iterar el Autómata Celular tantas veces como bits se requieran.\\
 
 Si se considera como salida del Autómata Celular la evolución de la célula central, sin considerar su estado inicial, a lo largo de 100 iteraciones, para la configuración inicial dada por:
 $$(0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0)$$
