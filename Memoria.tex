@@ -243,8 +243,48 @@ Para observar de forma más detallada la evolución de este Autómata Celular co
 Las aplicaciones de la teoría de autómatas celulares abarcan aspectos de la ciencia muy diversos como la computación e inteligencia artificial, la criptografía, el comportamiento de las moléculas de un gas, el flujo de tráfico y peatones, la evolución de la población, etc.
 
 \subsection{Criptografía}
-En al actualizada, la gran cantidad de información transmitida mediante redes de ordenadores y, en la mayoría de los casos, la necesidad de su confidencialidad, como por ejemplo: datos personales, cuentas bancarias, etc, hace necesario que esta información se transmita de manera fiable y segura. Está seguridad requiere del diseño e implementación de protocolos que garanticen la seguridad de los datos, de aquí nace la criptografía. El proceso de cifrar un mensaje consiste en transformarlo mediante un algoritmo de modo que sólo quien esté autorizado podrá invertir el proceso de cifrado para así poder obtener el mensaje original. Existen diversas formas de cifrar un mensaje y múltiples protocolos encargados de ello. Algunas de las técnicas de cifrado requieren una secuencia de bits pseudoaleatorios, para poder generar una clave de encriptado aparentemente aleatoria y sin ningún sentido pero que realmente si tiene una procedencia pre establecida y conocida.
+En al actualizada, la gran cantidad de información transmitida mediante redes de ordenadores y, en la mayoría de los casos, la necesidad de su confidencialidad, como por ejemplo: datos personales, cuentas bancarias, etc, hace necesario que esta información se transmita de manera fiable y segura. Está seguridad requiere del diseño e implementación de protocolos que garanticen la seguridad de los datos, de aquí nace la criptografía. El proceso de cifrar un mensaje consiste en transformarlo mediante un algoritmo de modo que sólo quien esté autorizado podrá invertir el proceso de cifrado para así poder obtener el mensaje original. Existen diversas formas de cifrar un mensaje y múltiples protocolos encargados de ello. Algunas de las técnicas de cifrado requieren una secuencia de bits pseudoaleatorios, para poder generar una clave de encriptado aparentemente aleatoria y sin ningún sentido pero que realmente si tiene una procedencia pre establecida y conocida. Para ello los Autómatas Celulares de Wolfram son excelentes como cifradores en flujo.\\
 
+Consideremos los Autómatas Celulares de Wolfram definidos por las reglas de transición números 30 y 45, respectivamente, que parecen ser los que tienen mejores propiedades como generadores de bits pseudoaleatorios:
+$$a_i^{t+1}  =  \lbrace a_{i-1}^t + a_i^t + a_{i+1}^t + a_i^t * a_{i+1}^t \rbrace \enspace  mod\enspace 2\enspace = a_{i-1}^t  \enspace XOR \enspace \big( a_i^t \enspace OR \enspace a_{i+1}^t \big) $$ 
+$$a_i^{t+1}  =  \lbrace 1 + a_{i-1}^t + a_{i+1}^t + a_i^t * a_{i+1}^t \rbrace \enspace  mod\enspace 2\enspace = a_{i-1}^t  \enspace XOR \enspace \big( a_i^t \enspace OR \enspace \big( \enspace NOT \enspace a_{i+1}^t \big)\big) $$ 
+
+Los diagramas de evolución de cada uno de los dos Autómatas Celulares anteriores pueden verse en las siguientes figuras:
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.7]{imagenes/regla_30.png}
+\caption{Diagrama de evolución del Autómata Celular de regla 30}
+\end{figure}
+
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.7]{imagenes/regla_45.png}
+\caption{Diagrama de evolución del Autómata Celular de regla 45}
+\end{figure}
+
+Para este diagrama se han considerado 50 generaciones para cada autómata celular con la misma configuración inicial. Se podría pensar en utilizar estos dos Autómatas Celulares como generadores pseoudoaleatorios sin más que considerar como semilla a la configuración inicial y tomar como salida la lista de ceros y unos definida por la última configuración. Sin embargo, hacerlo así supondría que se generaría una lsita de tantos bits  como bits de partida, dado que el número de células de todas las configuraciones es el mismo, por lo que este procedimiento no parace adecuado. Si lo que se desea es obtener una secuencia de bits cuya longitud sea mucho mayor que la longitud de la semilla o configuración inicial, es conveniente considerar como secuencia de salida la evolución de una de las células del Autómata. Con ello sólo haría falta conocer el estado inicial de unas pocas células e iterar el Autómata Celular tantas veces como bits se requieran.\\
+
+Si se considera como salida del Autómata Celular la evolución de la célula central, sin considerar su estado inicial, a lo largo de 100 iteraciones, para la configuración inicial dada por:
+$$(0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0)$$
+se tiene la siguiente salida de 100 bits:
+$$(1,0,1,1,1,0,0,1,1,0,0,0,1,0,1,1,0,0,1,0,0,1,1,1,1,0,$$
+$$1,1,1,1,0,1,0,1,1,1,1,0,1,0,1,0,0,1,0,0,0,1,0,1,1,1,0,$$
+$$0,0,0,0,1,0,0,1,1,0,1,1,1,1,1,0,0,1,0,0,1,0,0,1,0,0,$$
+$$1,0,1,1,1,1,0,1,0,1,1,1,0,0,1,0,1,0,1,0,0)$$
+
+Y su diagrama de evolución de la célula central, girado 90 grados, tiene la siguiente forma:
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.7]{imagenes/regla_30_100.png}
+\caption{Diagrama de evolución del Autómata Celular de regla 30 con 100 iteraciones}
+\end{figure}
+
+Se puede observar que con la configuración inicial de 25 células dada anteriormente, se ha obtenido la secuencia de 100 bits presentada en antes, si bien esta longitud podría ser mucho mayor sin más que iterara más veces la evolución del Autómata Celular.\\
+
+La decisión de la secuencia 
 \subsection{Modelado de flujo de tráfico y peatones}
 
 \subsection{Modelado de evolución de células o virus}
