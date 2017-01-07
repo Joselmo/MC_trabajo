@@ -167,7 +167,7 @@ A pesar de su simplicidad, el sistema logra una impresionante diversidad de comp
 \centering
 \includegraphics[scale=0.3]{imagenes/stephen.png}
 \caption{Stephen Wolfram}
-\label{fig:neumann}
+\label{fig:Stephen}
 \end{wrapfigure}
 Sus investigaciones fueron impulsadas inicialmente por un interés en los sistemas de modelado, tales como las redes neuronales. Él publicó su primer artículo en ``Reviews of Modern Physics'' donde investiga los autómatas celulares elementales ( Regla 30 en particular) en junio de 1983. La inesperada complejidad del comportamiento de estas reglas simples llevó a \textit{Wolfram} a sospechar que la complejidad en la naturaleza puede ser debido a mecanismos similares. Durante este período de \textit{Wolfram} formuló los conceptos de la intrínseca aleatoriedad y la irreductibilidad computacional , y sugirió que la regla 110 puede ser universal, hecho fue demostrado por asistente de investigación Mateo Cook, en la década de 1990. Durante su investigación tras múltiples simulaciones de diferentes Autómatas Celulares, estableció la siguiente clasificación de los mismos en virtud del comportamiento manifestado en los diagramas de evolución \cite{wolfram}:
 \begin{itemize}
@@ -282,9 +282,21 @@ Y su diagrama de evolución de la célula central, girado 90 grados, tiene la si
 \caption{Diagrama de evolución del Autómata Celular de regla 30 con 100 iteraciones}
 \end{figure}
 
-Se puede observar que con la configuración inicial de 25 células dada anteriormente, se ha obtenido la secuencia de 100 bits presentada en antes, si bien esta longitud podría ser mucho mayor sin más que iterara más veces la evolución del Autómata Celular.\\
+Se puede observar que con la configuración inicial de 25 células dada anteriormente, se ha obtenido la secuencia de 100 bits presentada en antes, si bien esta longitud podría ser mucho mayor sin más que iterara más veces la evolución del Autómata Celular. La decisión de la secuencia de bits a utilizar como salida dependerá del tipo de Autómata Celular de que se trate. Téngase en cuanta que existen Autómatas Celulares cuya evolución es muy simétrica, lo que dificulta su uso como generadores de números pseudoaleatorios.\\
 
-La decisión de la secuencia 
+El proceso para escriptar un mensaje utilizando la generación de pseudoaleatorios sería el siguiente. Primero definimos un Autómata Celular, indicamos el patrón inicial que tendrá y generamos una salida de bits deseada, como hicimos anteriormente con las 100 iteraciones del Autómata Celular. Ahora concatenamos el valor en binario de cada una de las letras del mensaje, según su código ASCII, y luego sumar, bit a bit, el mensaje obtenido con la secuencia de bits generada. Por ejemplo la palabra "SECRETO" utilizando el Autómata anterior sería:
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.7]{imagenes/secreto.png}
+\end{figure}
+
+El destinatario para poder recuperar el mensaje original solo necesita concatenar el valor en binario de cada una de las letras o símbolos del criptograma recibido y sumar, bit a bit, el criptograma con la clave, realizando así una involución del mensaje.\\
+
+La seguridad de este criptosistema está basada en la impredecibilidad de la clave, es decir, en la dificultad de poder obtener la secuencia pseudoaleatoria generada por el Autómata Celular. De ahí la importancia de que los Autómatas Celulares elegidos como generadores de bits pseudoaleatorios tengan buenas propiedades estadísticas. Hay estudios donde se comprueba y se revisa la seguridad de estos criptosistemas.\\
+
+
+
 \subsection{Modelado de flujo de tráfico y peatones}
 
 \subsection{Modelado de evolución de células o virus}
