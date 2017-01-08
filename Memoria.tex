@@ -56,12 +56,12 @@ Aun así hay todavía un amplio grupo de sistemas que es imposible modelar con e
 \section{Autómatas Celulares}
 Aunque no existe una definición formal sobre que es un Autómata Celular entendemos que es un estudio de modelado discreto para un sistema que evoluciona en generaciones o iteraciones discretas. Es recomendable utilizar esta técnica cuando se tiene un sistema con una colección masiva de objetos simples que interactúan unos con otros de forma aleatoria y por ello es utilizado en la teoría de la computación, las matemáticas, la física, las ciencias complejas, etc. \\
 
-Un Autómata Celular consiste en una rejilla regular de celdas, donde cada celda se conoce como célula y representa un estado del conjunto de estados disponibles del sistema. Cada celda puede tomar un valor de un rango de valores definidos para este sistema en particular, siempre que el valor sea discreto y perteneciente al conjunto de los reales. Además cada celda viene definida por su ``vecindario'', entendemos por vecindario al conjunto finito de las células adyacentes a una célula en concreto.  La rejilla va cambiando en el tiempo y actualizando el estado de sus células, a cada instante de tiempo se le denomina generación y el estado de las células en una generación no varía.  \\
+Un Autómata Celular consiste en una rejilla regular de celdas, donde cada celda se conoce como célula y representa un estado del conjunto de estados disponibles del sistema. Cada celda puede tomar un valor de un rango de valores definidos para este sistema en particular, siempre que el valor sea discreto y perteneciente al conjunto de los enteros. Además cada celda viene definida por su ``vecindario'', entendemos por vecindario al conjunto finito de las células adyacentes a una célula en concreto.  La rejilla va cambiando en el tiempo y actualizando el estado de sus células, a cada instante de tiempo se le denomina generación y el estado de las células en una generación no varía.  \\
 
 
 En el autómata celular cuando se avanza de generación, se actualiza el valor de todas las células del autómata aplicando una función de transición (``evolución''), que avanza el autómata al estado siguiente. Esta función de transición viene determinada por una ecuación matemática que toma como argumentos los valores de la vecindad de la célula además de del valor de la propia célula. Siempre se aplica de forma homogénea y para cada paso discreto del tiempo.\\
 
-Una manera de simular un autómata celular bidimensional es con una cuadrícula de tamaño infinito. Cada célula tiene dos posibles estados, viva o muerta. La vecindad de la célula se define por una regla en concreto, ya que la forma de considerar la adyacencia varía dependiendo del modelo y la versión del autómata que se utilice. Los tipos más comunes de vecindad son los que definieron \textit{Neumann} y \textit{Moore} y que se apodaron igual que sus autores. El vecindario definido por \textit{Von Neumann} se define como el conjunto de cuatro células que rodean ortogonalmente a una célula central. Hay una variante de este vecindario llamada ``zona ampliada de \textit{Von Neumann}'', que consiste en ampliar el vecindario a las ocho células que rodean ortogonalmente a la célula central. El vecindario definido por \textit{Moore} consiste en las ocho células adyacentes que rodean a una célula central.\\
+Una manera de simular un autómata celular bidimensional es con una cuadrícula de tamaño finito. Cada célula tiene dos posibles estados, viva o muerta. La vecindad de la célula se define por una regla en concreto, ya que la forma de considerar la adyacencia varía dependiendo del modelo y la versión del autómata que se utilice. Los tipos más comunes de vecindad son los que definieron \textit{Neumann} y \textit{Moore} y que se apodaron igual que sus autores. El vecindario definido por \textit{Von Neumann} se define como el conjunto de cuatro células que rodean ortogonalmente a una célula central. Hay una variante de este vecindario llamada ``zona ampliada de \textit{Von Neumann}'', que consiste en ampliar el vecindario a las ocho células que rodean ortogonalmente a la célula central. El vecindario definido por \textit{Moore} consiste en las ocho células adyacentes que rodean a una célula central.\\
 
 
 \begin{figure}[H]
@@ -76,7 +76,7 @@ Una manera de simular un autómata celular bidimensional es con una cuadrícula 
 
 La ecuación general del sistema de reglas que se utiliza para determinar el estado de la célula en la generación siguiente es del tipo $k^{k^s}$ donde $k$ es el número de posibles estados para una célula, y $s$ es el número de células de la vecindad (incluyendo al propia célula). De esta forma con la vecindad de \textit{Moore} en un sistema de dos dimensiones sería de $2^{2^9}$ el número total de autómatas posibles.\\
 
-Los Autómatas Celulares se representaban con rejillas finitas en vez de las rejillas infinitas, ya que con la rejilla infinita no se podría realmente trabajar de forma precisa. Pero al utilizar una rejilla finita se presentaba una serie de problemas, el primero de ellos que tratamiento se realiza con las células de los bordes. Las células situadas en los limites de la rejilla ya no cuentan con una vecindad igual que el resto de las células del autómata, de esta forma la función de transición ya no trataría de la misma forma a todas las células. Si aplicamos una función  distinta a las células de los bordes no se estaría tratando tampoco de forma igualitaria a todas las células del autómata. Para este problema se han establecido unas soluciones llamadas ``condiciones frontera'', cada una de ellas esta orientada a solucionar distintos problemas reales del modelado:
+Los Autómatas Celulares se representaban con rejillas finitas en vez de las rejillas infinitas, ya que con la rejilla infinita no se podría realmente trabajar de forma precisa. Pero al utilizar una rejilla finita se presentaba una serie de problemas, el primero de ellos es el tratamiento que se realiza con las células de los bordes. Las células situadas en los limites de la rejilla ya no cuentan con una vecindad igual que el resto de las células del autómata, de esta forma la función de transición ya no trataría de la misma manera a todas las células. Si aplicamos una función  distinta a las células de los bordes no se estaría tratando tampoco de forma igualitaria a todas las células del autómata. Para este problema se han establecido unas soluciones llamadas ``condiciones frontera'', cada una de ellas esta orientada a solucionar distintos problemas reales del modelado:
 \begin{itemize}
 \item Frontera Abierta: Se considera que fuera de la rejilla residen células, todas con un valor fijo. En el caso particular de que el autómata tenga dos estados en su conjunto $k$, una frontera se dice fría si las células fuera de la frontera se consideran muertas, y caliente si se consideran vivas.
 \item Frontera Periódica: Se considera a la rejilla como si sus extremos se tocaran. En una rejilla de dimensión 1, esto puede visualizarse en dos dimensiones como una circunferencia. En tres dimensiones la rejilla podría visualizarse como un toroide.
@@ -95,7 +95,7 @@ Los Autómatas Celulares se representaban con rejillas finitas en vez de las rej
 
 
 \subsection{Autómatas Celulares Lineales}
-Unos de los Autómatas Celulares más utilizados y comunes son los denominados Autómatas Celulares lineales. Llamados así por que utilizan solo una dimensión, es decir, sus células están dispuestas una a continuación de otra a modo de una cadena. Si el autómata celular lineal consta de n células, cada una de ellas se nombrará por $\langle i \rangle$ con $ 0 = \leq i \leq n-1 $. Por ejemplo, un autómata celular lineal con cinco células sería:
+Unos de los Autómatas Celulares más utilizados y comunes son los denominados Autómatas Celulares lineales. Llamados así por que utilizan solo una dimensión, es decir, sus células están dispuestas una a continuación de otra a modo de una cadena. Si el autómata celular lineal consta de n células, cada una de ellas se nombrará por $\langle i \rangle$ con $ 0  \leq i \leq n-1 $. Por ejemplo, un autómata celular lineal con cinco células sería:
 
 \begin{figure}[H]
 \centering
@@ -104,7 +104,7 @@ Unos de los Autómatas Celulares más utilizados y comunes son los denominados A
 \end{figure}
 
 Si, además, $S_k$ es el conjunto de $k$ estados y $a_i^t \in S_k, \enspace 0 \leq i \leq n-1$, es el estado de la célula $\langle i \rangle$ en e instante $t$, entonces se denomina ``\textit{configuración del Autómata Celular en el instate $t$}'' y se denota por $C^t$ al siguiente vector:
-$$C^t = \enspace \big( a_0^t,a_1^t, ..., a_{n-1}^t \big) \in S_k x ... n ... x S_k$$
+$$C^t = \enspace \big( a_0^t,a_1^t, ..., a_{n-1}^t \big) \in S_k , ... n ... , S_k$$
 
 La evolución de un autómata celular a lo largo del tiempo se representa de forma sencilla sin más que escribir las sucesivas configuraciones de sus células, una debajo de otra, a lo que llamaremos diagrama de evolución del autómata celular. A continuación se muestra un ejemplo del diagrama de evolución de un autómata celular de 5 células.
 
@@ -129,7 +129,7 @@ Dada una célula $i$, con $i < r$ ó $i > n-r $, la determinación de la vecinda
 
 \section{Historia}
 La historia de los Autómatas Celulares se remonta a la década de los 40, cuando fue desarrollada su teoría por \textit{Von Neumann} y descrita en su libro ``The Theory of Self-reproducing Automata'' \cite{Teoria_Von_neumann}.
-A partir de entonces la teoría original ha vivido tres grandes etapas por grandes matemáticos que aportaron cada uno de ellos un nuevo enfoque o una nueva característica importante en la teoría de los Autómatas Celulares.
+A partir de entonces la teoría original ha vivido tres grandes etapas por grandes matemáticos/físicos/informáticos que aportaron cada uno de ellos un nuevo enfoque o una nueva característica importante en la teoría de los Autómatas Celulares.
 Vamos a describir como fue la evolución en estas tres etapas de forma cronológica. 
 
 %--------------------------------------------------------------------------
@@ -177,7 +177,7 @@ La vecindad para cada célula son ocho: los vecinos formados por la vecindad de 
 \textit{Muerte}: se reemplaza una célula viva por una muerta si dicha célula no tiene más de 1 vecino vivo (muerte por aislamiento) o si tiene más de 3 vecinos vivos (muerte por sobrepoblación).\\
 \textit{Supervivencia}: una célula viva permanecerá en ese estado si tiene 2 o 3 vecinos vivos.\\
 
-El juego hizo inmediatamente famoso Conway, pero también abrió un nuevo campo de investigación matemática en el campo de los autómatas celulares. Debido a las analogías de la vida con el ascenso, caída y transformaciones de una sociedad de organismos vivos, que pertenece a una creciente clase de juegos denominados "juegos de simulación" (juegos que se asemejan a los procesos de la vida real).\\
+El juego hizo inmediatamente famoso Conway, pero también abrió un nuevo campo de investigación con los autómatas celulares. Debido a las analogías de la vida con el ascenso, caída y transformaciones de una sociedad de organismos vivos, que pertenece a una creciente clase de juegos denominados "juegos de simulación" (juegos que se asemejan a los procesos de la vida real).\\
 
 A pesar de su simplicidad, el sistema logra una impresionante diversidad de comportamientos, fluctuando entre aparente aleatoriedad y el orden. Una de las características más evidentes de juego de la vida es la frecuente aparición de planeadores o ``Gliders'', que son un tipo de patrón que se desplaza por la cuadrícula de forma continua , los arreglos de células que se mueven esencialmente a sí mismos a través de la rejilla. Es posible disponer el autómata para que los planeadores interactúen para realizar cálculos, y después de mucho esfuerzo se ha demostrado que el juego de la vida puede emular  la máquina de Turing.
 
@@ -268,9 +268,9 @@ Para observar de forma más detallada la evolución de este Autómata Celular co
 
 
 \subsection{Regla 30}
-Una de las reglas, de los Autómatas Celulares binarios, más famosas y utilizadas es la regla 30, de \textit{Wolfram}, utilizada en multitud de campos como la criptografía, que explicaremos más adelante, generación de aleatorios  y también se ha utilizado como un generador de números aleatorios en Mathematica. En el  sistema de clasificación de Wolfram , la regla 30 es una regla de clase III, se presentan aperiódica y de comportamiento caótico.
+Una de las reglas, de los Autómatas Celulares binarios, más famosas y utilizadas es la regla 30, de \textit{Wolfram}, utilizada en multitud de campos como la criptografía, que explicaremos más adelante, generación de aleatorios  y también se ha utilizado como un generador de números aleatorios en Mathematica. En el  sistema de clasificación de Wolfram , la regla 30 es una regla de clase III, se presentan aperiódica y de comportamiento caótico.\\
 
-Esta regla es de particular interés debido a que produce patrones complejos, aparentemente al azar a partir de reglas simples y bien definidas. Debido a esto, Wolfram cree que la regla 30, y los autómatas celulares, en general, son la clave para entender cómo las reglas simples producen estructuras y comportamientos complejos en la naturaleza. Por ejemplo, un patrón que se asemeja a la Regla 30 figura en el caparazón multitud de especies de caracoles de tipo cono, Conus textile.
+Esta regla es de particular interés debido a que produce patrones complejos, aparentemente al azar a partir de reglas simples y bien definidas. Debido a esto, Wolfram cree que la regla 30, y los autómatas celulares, en general, son la clave para entender cómo las reglas simples producen estructuras y comportamientos complejos en la naturaleza. Por ejemplo, un patrón que se asemeja a la Regla 30 figura en el caparazón de multitud de especies de caracoles de tipo cono, Conus textile.
 
 \begin{figure}[H]
 \centering
@@ -338,7 +338,7 @@ Como se puede observar en el diagrama anterior este Autómata Celular solo crece
 Las aplicaciones de la teoría de autómatas celulares abarcan aspectos de la ciencia muy diversos como la computación e inteligencia artificial, la criptografía, el comportamiento de las moléculas de un gas, el flujo de tráfico y peatones, la evolución de la población, etc.
 
 \subsection{Criptografía}
-En al actualizada, la gran cantidad de información transmitida mediante redes de ordenadores y, en la mayoría de los casos, la necesidad de su confidencialidad, como por ejemplo: datos personales, cuentas bancarias, etc, hace necesario que esta información se transmita de manera fiable y segura. Está seguridad requiere del diseño e implementación de protocolos que garanticen la seguridad de los datos, de aquí nace la criptografía. El proceso de cifrar un mensaje consiste en transformarlo mediante un algoritmo de modo que sólo quien esté autorizado podrá invertir el proceso de cifrado para así poder obtener el mensaje original. Existen diversas formas de cifrar un mensaje y múltiples protocolos encargados de ello. Algunas de las técnicas de cifrado requieren una secuencia de bits pseudoaleatorios, para poder generar una clave de encriptado aparentemente aleatoria y sin ningún sentido pero que realmente si tiene una procedencia pre establecida y conocida. Para ello los Autómatas Celulares de Wolfram son excelentes como cifradores en flujo.\\
+En la actualidad, la gran cantidad de información transmitida mediante redes de ordenadores y, en la mayoría de los casos, la necesidad de su confidencialidad, como por ejemplo: datos personales, cuentas bancarias, etc, hace necesario que esta información se transmita de manera fiable y segura. Está seguridad requiere del diseño e implementación de protocolos que garanticen la seguridad de los datos, de aquí nace la criptografía. El proceso de cifrar un mensaje consiste en transformarlo mediante un algoritmo de modo que sólo quien esté autorizado podrá invertir el proceso de cifrado para así poder obtener el mensaje original. Existen diversas formas de cifrar un mensaje y múltiples protocolos encargados de ello. Algunas de las técnicas de cifrado requieren una secuencia de bits pseudoaleatorios, para poder generar una clave de encriptado aparentemente aleatoria y sin ningún sentido pero que realmente si tiene una procedencia pre establecida y conocida. Para ello los Autómatas Celulares de Wolfram son excelentes como cifradores en flujo.\\
 
 Consideremos los Autómatas Celulares de Wolfram definidos por las reglas de transición números 30 y 45, respectivamente, que parecen ser los que tienen mejores propiedades como generadores de bits pseudoaleatorios:
 $$a_i^{t+1}  =  \lbrace a_{i-1}^t + a_i^t + a_{i+1}^t + a_i^t * a_{i+1}^t \rbrace \enspace  mod\enspace 2\enspace = a_{i-1}^t  \enspace XOR \enspace \big( a_i^t \enspace OR \enspace a_{i+1}^t \big) $$ 
@@ -379,7 +379,7 @@ Y su diagrama de evolución de la célula central, girado 90 grados, tiene la si
 
 Se puede observar que con la configuración inicial de 25 células dada anteriormente, se ha obtenido la secuencia de 100 bits presentada en antes, si bien esta longitud podría ser mucho mayor sin más que iterara más veces la evolución del Autómata Celular. La decisión de la secuencia de bits a utilizar como salida dependerá del tipo de Autómata Celular de que se trate. Téngase en cuanta que existen Autómatas Celulares cuya evolución es muy simétrica, lo que dificulta su uso como generadores de números pseudoaleatorios.\\
 
-El proceso para escriptar un mensaje utilizando la generación de pseudoaleatorios sería el siguiente. Primero definimos un Autómata Celular, indicamos el patrón inicial que tendrá y generamos una salida de bits deseada, como hicimos anteriormente con las 100 iteraciones del Autómata Celular. Ahora concatenamos el valor en binario de cada una de las letras del mensaje, según su código ASCII, y luego sumar, bit a bit, el mensaje obtenido con la secuencia de bits generada. Por ejemplo la palabra "SECRETO" utilizando el Autómata anterior sería:
+El proceso para encriptar un mensaje utilizando la generación de pseudoaleatorios sería el siguiente. Primero definimos un Autómata Celular, indicamos el patrón inicial que tendrá y generamos una salida de bits deseada, como hicimos anteriormente con las 100 iteraciones del Autómata Celular. Ahora concatenamos el valor en binario de cada una de las letras del mensaje, según su código ASCII, y luego sumar, bit a bit, el mensaje obtenido con la secuencia de bits generada. Por ejemplo la palabra ``SECRETO'' utilizando el Autómata anterior sería:
 
 \begin{figure}[H]
 \centering
@@ -400,24 +400,24 @@ En el modelo de Nagel-Schreckenberg, una carretera se divide en células . En el
 Antes de introducir las reglas del Autómata Celular, se mencionan los parámetros relativos al modelo:
 \begin{itemize}
 \item Cada vehículo tiene asociada una posición $x$ en la autopista. Al ser un modelo de espacio discreto, cada célula equivale a un vehículo o a una célula vacía. Por convención, la posición es creciente, a partir de un índice 0.
-\item  Cada vehículo tiene una velocidad $v$ asociada, que es un valor entero, tal que: $v \in \lbrace 0,1,...,v_{max} \lbrace$.
+\item  Cada vehículo tiene una velocidad $v$ asociada, que es un valor entero, tal que: $v \in \lbrace 0,1,...,v_{max} \rbrace$.
 \item $v_{max}$ es la máxima velocidad que puede alcanzar cualquiera de los vehículos.
 \item $p$ es la probabilidad de que un vehículo reduzca su velocidad aleatoriamente. Si $p=0$, el modelo se conoce como Na-Sch Determinista, de lo contrario se conoce como Na-Sch No Determinista. Esta probabilidad puede verse como la causante de congestionamientos aleatorios en un flujo de tráfico normal, causado en la realidad por alguna causa arbitraria (como una distracción del conductor antes de comenzar a acelerar).
 \item  $b$ se conoce como la brecha, que es la distancia en células que separa a un vehículo de su predecesor (el vehículo inmediatamente adelante de él).
 \end{itemize}
 
-Debe aclararse que la velocidad está dada en células por unidad de tiempo, y al tratarse de un AC discreto, el tiempo corre en unidades, por lo que hablar de una velocidad $n$ equivale a decir que un vehículo se moverá $n$ células hacia adelante en un paso de tiempo.\\
+Debe aclararse que la velocidad está dada en células por unidad de tiempo, y al tratarse de un Autómata Celular discreto, el tiempo corre en unidades, por lo que hablar de una velocidad $n$ equivale a decir que un vehículo se moverá $n$ células hacia adelante en un paso de tiempo.\\
 
 El modelo Na-Sch consta de 4 reglas para modelar el comportamiento de un vehículo cualquiera en la autopista. Estas reglas se refieren a la aceleración, frenado y movimiento de los vehículos:\\
 
 
-Regla 1.- Aceleración. $ v=min(v+1,v_{max})$. Es decir, si aún no se llega a la velocidad máxima, acelerar en una unidad.\\
+Regla 1.- Aceleración $ v=min(v+1,v_{max})$. Es decir, si aún no se llega a la velocidad máxima, acelerar en una unidad.\\
 
-Regla 2.- Frenado por la interacción con otros vehículos. $v=min(v,b)$. Es decir, la velocidad será igual al mínimo entre la velocidad calculada en la regla 1 y la brecha con el predecesor. Esto evitará que el vehículo golpee al predecesor (el modelo Na-Sch original no modela accidentes vehiculares).\\
+Regla 2.- Frenado por la interacción con otros vehículos $v=min(v,b)$. Es decir, la velocidad será igual al mínimo entre la velocidad calculada en la regla 1 y la brecha con el predecesor. Esto evitará que el vehículo golpee al predecesor (el modelo Na-Sch original no modela accidentes vehiculares).\\
 
 Regla 3.- Frenado aleatorio. Con probabilidad $p$, $ v=max(v-1,0)$. Es decir, con probabilidad $p$, si el vehículo aún no está completamente detenido, su velocidad (la calculada en la regla 2) se reduce en una unidad. Si $p=0$ (modelo Na-Sch determinista), esta regla nunca se lleva a cabo.\\
 
-Regla 4.- Movimiento. $ x=x+v$. Es decir, se actualiza la posición del vehículo con su nueva velocidad $v$ (la calculada en la regla 3).\\
+Regla 4.- Movimiento $ x=x+v$. Es decir, se actualiza la posición del vehículo con su nueva velocidad $v$ (la calculada en la regla 3).\\
  
 Al tratarse de un Autómata Celular, debe recordarse que estas reglas se aplican a todos los vehículos de manera homogénea y en paralelo (al mismo tiempo).El Autómata Celular del modelo Na-Sch tendrá una rejilla unidimensional, con $L$ células. Las vecindades están dadas por la interacción de los vehículos y sus predecesores (las brechas). Los estados posibles de un vehículo son los enteros entre 0 y $v_{max}$. La función de transición del Autómata Celular está dada por las 4 reglas anteriormente descritas. \cite{trafico}
  
@@ -470,6 +470,7 @@ Puesto que la programación de la tabla de reglas de un Autómata Celular que ll
 Uno de los primeros investigadores en generar Autómatas Celulares con algoritmos genéticos fue el físico \textit{Norman Packard}. Examinó la frecuencia de las reglas generadas como función del parámetro e interpretó los resultados como evidencias de dos hipótesis:
 \begin{enumerate}
 \item Los Autómatas Celulares capaces de llevar a cabo cálculos complejos, se sitúan cerca de valores críticos que determinan transiciones de fase entre regímenes ordenados y caóticos.
+\newpage
 \item La evolución tiende a seleccionar Autómatas Celulares con valores cercanos a dichos valores críticos.
 \end{enumerate}
 
