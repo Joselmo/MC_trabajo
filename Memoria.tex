@@ -10,6 +10,7 @@
 \horrule{0.5pt} \\[0.4cm] % Thin top horizontal rule
 \huge Autómatas Celulares \\ % The assignment title
 \horrule{2pt} \\[0.5cm] % Thick bottom horizontal rule
+\author{Elena María Gómez Ríos y Jose Luis Martínez Ortiz}
 }
 
 \date{\normalsize\today} % Incluye la fecha actual
@@ -28,8 +29,7 @@
 %	Resumen introductorio (entre 5 y 15 lineas)
 %----------------------------------------------------------------------
 \begin{abstract} 
-% INCOMPLETO!!!!!
-Se ha realizado un trabajo sobre los Autómatas Celulares desarrollados en la época de los 60 por \textit{Von Neumann}. La teoría de los Autómatas Celulares ha ido cambiando durante su vida con diferentes vertientes y multitud de variaciones pero nos centraremos en solo dos versiones más a parte de la de Von Neumann.
+Se ha realizado un trabajo sobre los Autómatas Celulares desarrollados en la época de los 60 por \textit{Von Neumann}. La teoría de los Autómatas Celulares ha ido cambiando desde sus inicios pasando por \textit{Wolfram} quien definió una reglas para un tipo en concreto y definió cuatro clases de Autómatas Celulares. Se describen algunas de las reglas más utilizadas y algunas de las aplicaciones actuales para estos modelos como el modelamiento del flujo de tráfico en carreteras. Y por ultimo se le da un enfoque actual con la utilización de algoritmos genéticos para desarrollar Autómatas Celulares.
 
 % IDEA BASICA Y GENERAL - HAY QUE HACERLO BIEN!!!!!!!!
 
@@ -137,14 +137,14 @@ Vamos a describir como fue la evolución en estas tres etapas de forma cronológ
 %--------------------------------------------------------------------------
 
 \subsection{Era de Von Neumann} % 
-John Von Neumann trabajaba en el Laboratorio Nacional Los Álamos junto a su amigo físico y científico de la computación Stanislaw Ulam. Neumann quería desarrollar robots que pudieran 
+John Von Neumann trabajaba en el Laboratorio Nacional Los Álamos junto a su amigo físico y científico de la computación Stanislaw Ulam. Neumann quería desarrollar robots  
 \begin{wrapfigure}{l}{0.4\linewidth}
 \centering
 \includegraphics[scale=3]{imagenes/neumann.png}
 \caption{John Von Neumann}
 \label{fig:neumann}
 \end{wrapfigure}
-autoreplicarse, es decir, robots que se pudiera reproducirse a si mismos, pero pronto se dio cuenta de la altísima dificultad que suponía crear un robot que pudiera crear a su vez otros robots. La máquina tendría un coste de prestaciones muy elevado y requeriría una infinidad de piezas para poder construirse. Ulam que estaba estudiando el crecimiento de los cristales utilizando una red de celosía como modelo, ayudo a Neumann con el problema que se le había presentado sugiriéndole que utilizara un sistema discreto para crear un modelo reduccionista de autoreplicación. Además Neumann leyó un documento de Simposio Hixon titulado ``The general and logical theory of automata'' el cual le sirvió para desarrollar y publicar su teoría de Autómatas Celulares en su trabajo \cite{Teoria_Von_neumann} a finales de los años 40. \\
+que pudieran autoreplicarse, es decir, robots que se pudiera reproducirse a si mismos, pero pronto se dio cuenta de la altísima dificultad que suponía crear un robot que pudiera crear a su vez otros robots. La máquina tendría un coste de prestaciones muy elevado y requeriría una infinidad de piezas para poder construirse. Ulam que estaba estudiando el crecimiento de los cristales utilizando una red de celosía como modelo, ayudo a Neumann con el problema que se le había presentado sugiriéndole que utilizara un sistema discreto para crear un modelo reduccionista de autoreplicación. Además Neumann leyó un documento de Simposio Hixon titulado ``The general and logical theory of automata'' el cual le sirvió para desarrollar y publicar su teoría de Autómatas Celulares en su trabajo \cite{Teoria_Von_neumann} a finales de los años 40. \\
 
 Esta primera teoría les sirvió a Ulam y Neumann para crear un método que calcula el movimiento de liquido. El concepto fundamental del método fue tratar el liquido como un conjunto de unidades discretas, finito y muy grande de pequeños elementos más simples cuyo comportamiento dependía de los elementos que lo rodeaban de esta forma se creó el primer autómata celular en la década de los cincuenta. Al igual que la red de celosía que estudiaba Ulam, los Autómatas Celulares de Neumann son bidimensionales, con su autoreplicación implementado de forma algorítmica. El resultado fue un autómata celular que en su interior creaba copias dentro de su sistema y con 29 estados por célula, de esta forma dio una prueba de la existencia de un patrón que podría hacer infinidad de copias de sí mismo dentro del su propio universo de células. Este diseño se le llamo ``constructor universal de Von Neumann''.\\
 
@@ -193,16 +193,16 @@ A pesar de su simplicidad, el sistema logra una impresionante diversidad de comp
 %--------------------------------------------------------------------------
 %	Era de Stephen Wolfram
 %--------------------------------------------------------------------------
-
+\newpage
 \subsection{Era de Stephen Wolfram} % 
-\textit{Stephen Wolfram} comenzó a trabajar de forma independiente en autómatas celulares a mediados de 1981, después de considerar cómo los patrones complejos aparecían en la naturaleza. 
+\textit{Stephen Wolfram} comenzó a trabajar de forma independiente en autómatas celulares a mediados de 1981, después de considerar cómo los patrones complejos aparecían en la naturaleza. Sus investigaciones fueron impulsadas inicialmente por un interés en los  
 \begin{wrapfigure}{l}{0.4\linewidth}
 \centering
 \includegraphics[scale=0.3]{imagenes/stephen.png}
 \caption{Stephen Wolfram}
 \label{fig:Stephen}
 \end{wrapfigure}
-Sus investigaciones fueron impulsadas inicialmente por un interés en los sistemas de modelado, tales como las redes neuronales. Él publicó su primer artículo en ``Reviews of Modern Physics'' donde investiga los autómatas celulares elementales ( Regla 30 en particular) en junio de 1983. La inesperada complejidad del comportamiento de estas reglas simples llevó a \textit{Wolfram} a sospechar que la complejidad en la naturaleza puede ser debido a mecanismos similares. Durante este período de \textit{Wolfram} formuló los conceptos de la intrínseca aleatoriedad y la irreductibilidad computacional , y sugirió que la regla 110 puede ser universal, hecho fue demostrado por asistente de investigación Mateo Cook, en la década de 1990. Durante su investigación tras múltiples simulaciones de diferentes Autómatas Celulares, estableció la siguiente clasificación de los mismos en virtud del comportamiento manifestado en los diagramas de evolución \cite{wolfram}:
+sistemas de modelado, tales como las redes neuronales. Él publicó su primer artículo en ``Reviews of Modern Physics'' donde investiga los autómatas celulares elementales ( Regla 30 en particular) en junio de 1983. La inesperada complejidad del comportamiento de estas reglas simples llevó a \textit{Wolfram} a sospechar que la complejidad en la naturaleza puede ser debido a mecanismos similares. Durante este período de \textit{Wolfram} formuló los conceptos de la intrínseca aleatoriedad y la irreductibilidad computacional , y sugirió que la regla 110 puede ser universal, hecho fue demostrado por asistente de investigación Mateo Cook, en la década de 1990. Durante su investigación tras múltiples simulaciones de diferentes Autómatas Celulares, estableció la siguiente clasificación de los mismos en virtud del comportamiento manifestado en los diagramas de evolución \cite{wolfram}:
 \begin{itemize}
 \item \textit{Autómata Celular de Clase 1}: son aquellos que evolucionan a estados homogéneos o constantes, es decir, o todo ceros, o todo unos. Además, dicha evolución es independiente de la configuración inicial considerada.
 \item \textit{Autómata Celular de Clase 2}: son los autómatas que dan lugar a conjuntos de estructuras periódicas y estables. En ellos la evolución del estado de una determinada célula a lo largo del tiempo estará influida por los estados de un grupo fijo de células de la configuración inicial.
@@ -267,6 +267,68 @@ Para observar de forma más detallada la evolución de este Autómata Celular co
 \end{figure}
 
 
+\subsection{Regla 30}
+Una de las reglas, de los Autómatas Celulares binarios, más famosas y utilizadas es la regla 30, de \textit{Wolfram}, utilizada en multitud de campos como la criptografía, que explicaremos más adelante, generación de aleatorios  y también se ha utilizado como un generador de números aleatorios en Mathematica. En el  sistema de clasificación de Wolfram , la regla 30 es una regla de clase III, se presentan aperiódica y de comportamiento caótico.
+
+Esta regla es de particular interés debido a que produce patrones complejos, aparentemente al azar a partir de reglas simples y bien definidas. Debido a esto, Wolfram cree que la regla 30, y los autómatas celulares, en general, son la clave para entender cómo las reglas simples producen estructuras y comportamientos complejos en la naturaleza. Por ejemplo, un patrón que se asemeja a la Regla 30 figura en el caparazón multitud de especies de caracoles de tipo cono, Conus textile.
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.7]{imagenes/concha.jpg}
+\caption{textil conus fotografía}
+\end{figure}
+
+
+La Regla 30 utiliza el patrón de la siguiente figura, cómo se comportará la célula en la siguiente generación dependiendo de su vecindario actual.
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.7]{imagenes/rule_30_1.png}
+\caption{Patrón de la Regla 30}
+\end{figure}
+
+Además el siguiente patrón surge de un estado inicial en una única célula con el estado 1 (que se muestra como negro) está rodeado por las células con el estado 0 (blanco). si avanzamos 15 generaciones la Regla 30 podemos empezar a observar como la parte izquierda del diagrama de evolución del autómata celular se va repitiendo y la derecha sigue un movimiento caótico.
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.7]{imagenes/rule_30_2.png}
+\caption{Diagrama de evolución para 15 generaciones de la Regla 30}
+\end{figure}
+
+Si seguimos evolucionando el Autómata hasta la generación número cien obtendríamos el siguiente autómata:
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=1]{imagenes/rule_30_3.jpg}
+\caption{Diagrama de evolución para 100 generaciones de la Regla 30}
+\end{figure}
+
+Varios motivos están presentes en esta estructura, tal como la aparición frecuente de triángulos blancos y un patrón de rayas bien definido en el lado izquierdo; sin embargo, la estructura en su conjunto no tiene un patrón discernible. El número de células negras en la generación $n$ norte está dada por la secuencia $1, 3, 3, 6, 4, 9, 5, 12, 7, 12, 11, 14, 12, 19, 13,\\ 22, 15, 19, ... $ (secuencia A070952 en el OEIS ).
+
+Como se desprende de la imagen de arriba, la regla 30 genera aparente aleatoriedad a pesar de la falta de cualquier cosa que pudiera considerarse razonablemente como entrada aleatoria. Stephen Wolfram propuso utilizar su columna central como un generador de números pseudoaleatorios (PRNG); que pasa a muchas pruebas estándar de aleatoriedad, y Wolfram utiliza esta regla en el producto Mathematica para crear números aleatorios. Aunque la Regla 30 produce aleatoriedad en muchos patrones de entrada, también hay un número infinito de patrones de entrada que resultan en patrones de repetición. El ejemplo trivial de tal patrón es el patrón de entrada única que consiste en ceros. Un ejemplo menos trivial, encontrado por Mateo de Cook , es cualquier patrón de entrada que consta de infinitas repeticiones del patrón de '00001000111000', con repeticiones opcionalmente separadas por seis más. Muchos de esos patrones más fueron encontrados por Frans Faase.
+
+Sorber y Tomassini han demostrado que, como regla generador de números aleatorios 30 exhibe mal comportamiento cuando se aplica a todas las columnas de reglas en comparación con otros generadores basados en autómatas celulares. Los autores también han expresado su preocupación de que "Los resultados relativamente bajos obtenidos por la regla 30 pueden deberse al hecho de que hemos considerado secuencias aleatorias $N$ generado de forma simultánea, en lugar de uno solo el considerado por Wolfram."
+
+\subsection{Regla 110}
+La Regla 110, al igual que El Juego de la Vida, pertenece a la clase 4 según la clasificación de \textit{Wolfram} y exhibe un  comportamiento, que no es ni totalmente aleatorio ni completamente repetitivo.Las estructuras localizadas aparecen e interactúan de diversas maneras de aspectos complicados. En el curso del desarrollo de una nueva clase de ciencia , como asistente de investigación de Wolfram en 1994, Mateo Cook, demostró que algunas de estas estructuras eran lo suficientemente ricas como para apoyar la universalidad. Este resultado es interesante porque la regla 110 es un sistema unidimensional extremadamente simple, y difícil de diseñar para realizar un comportamiento específico. Por lo tanto, este resultado proporciona un apoyo importante a la vista de \textit{Wolfram} esa clase 4 sistemas son inherentemente propensos a ser universal. Regla 110 ha sido la base para algunas de las máquinas de Turing universales más pequeños.\\
+
+La Regla 110 utiliza el siguiente patrón:
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.7]{imagenes/rule_110_1.png}
+\caption{Patrón para el Autómata Celular Lineal de la Regla 110}
+\end{figure}
+
+Y su diagrama de evolución para las primeras 15 generaciones son
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.7]{imagenes/rule_110_2.png}
+\caption{Diagrama de evolución con 15 generaciones de la Regla 110}
+\end{figure}
+
+Como se puede observar en el diagrama anterior este Autómata Celular solo crece hacia la izquierda y a simple vista parece que se genera repitiendo algunas formas. Este Autómata Celular es el único de todos los demás que ha podido completar la prueba de Turing completamente.
 
 %--------------------------------------------------------------------------
 %	Aplicaciones Actuales 
@@ -331,8 +393,131 @@ La seguridad de este criptosistema está basada en la impredecibilidad de la cla
 
 
 \subsection{Modelado de flujo de tráfico y peatones}
+También conocido como el modelo de Nagel-Schreckenberg (Na-Sch) es un modelo teórico para la simulación de la autopista de tráfico utilizando Autómatas Celulares. El modelo fue desarrollado en la década de 1990 por los alemanes físicos Kai Nagel y Michael Schreckenberg. Se trata esencialmente de un Autómata Celular simple para modelar el flujo de tráfico, que puede reproducir los atascos de tráfico, es decir, muestran una desaceleración de la velocidad media del coche cuando el camino está lleno (alta densidad de coches). El modelo muestra cómo los atascos de tráfico pueden ser considerados como un fenómeno emergente o colectiva debido a las interacciones entre los coches en la carretera, cuando la densidad de los coches es alta y así que los coches están muy cerca el uno al otro en promedio.\\
 
-\subsection{Modelado de evolución de células o virus}
+En el modelo de Nagel-Schreckenberg, una carretera se divide en células . En el modelo original, estas células se alinean en una sola fila cuyos extremos están conectados de manera que todas las células forman un círculo, es decir un Autómata Celular de frontera periódica. Cada célula es o bien la carretera vacía o contiene un solo coche; es decir, no más de un coche puede ocupar una celda en cualquier momento. Cada coche se le asigna una velocidad que es un número entero entre 0 y una velocidad máxima (= 5 en trabajo original Nagel y de Schreckenberg).\\
+
+Antes de introducir las reglas del Autómata Celular, se mencionan los parámetros relativos al modelo:
+\begin{itemize}
+\item Cada vehículo tiene asociada una posición $x$ en la autopista. Al ser un modelo de espacio discreto, cada célula equivale a un vehículo o a una célula vacía. Por convención, la posición es creciente, a partir de un índice 0.
+\item  Cada vehículo tiene una velocidad $v$ asociada, que es un valor entero, tal que: $v \in \lbrace 0,1,...,v_{max} \lbrace$.
+\item $v_{max}$ es la máxima velocidad que puede alcanzar cualquiera de los vehículos.
+\item $p$ es la probabilidad de que un vehículo reduzca su velocidad aleatoriamente. Si $p=0$, el modelo se conoce como Na-Sch Determinista, de lo contrario se conoce como Na-Sch No Determinista. Esta probabilidad puede verse como la causante de congestionamientos aleatorios en un flujo de tráfico normal, causado en la realidad por alguna causa arbitraria (como una distracción del conductor antes de comenzar a acelerar).
+\item  $b$ se conoce como la brecha, que es la distancia en células que separa a un vehículo de su predecesor (el vehículo inmediatamente adelante de él).
+\end{itemize}
+
+Debe aclararse que la velocidad está dada en células por unidad de tiempo, y al tratarse de un AC discreto, el tiempo corre en unidades, por lo que hablar de una velocidad $n$ equivale a decir que un vehículo se moverá $n$ células hacia adelante en un paso de tiempo.\\
+
+El modelo Na-Sch consta de 4 reglas para modelar el comportamiento de un vehículo cualquiera en la autopista. Estas reglas se refieren a la aceleración, frenado y movimiento de los vehículos:\\
+
+
+Regla 1.- Aceleración. $ v=min(v+1,v_{max})$. Es decir, si aún no se llega a la velocidad máxima, acelerar en una unidad.\\
+
+Regla 2.- Frenado por la interacción con otros vehículos. $v=min(v,b)$. Es decir, la velocidad será igual al mínimo entre la velocidad calculada en la regla 1 y la brecha con el predecesor. Esto evitará que el vehículo golpee al predecesor (el modelo Na-Sch original no modela accidentes vehiculares).\\
+
+Regla 3.- Frenado aleatorio. Con probabilidad $p$, $ v=max(v-1,0)$. Es decir, con probabilidad $p$, si el vehículo aún no está completamente detenido, su velocidad (la calculada en la regla 2) se reduce en una unidad. Si $p=0$ (modelo Na-Sch determinista), esta regla nunca se lleva a cabo.\\
+
+Regla 4.- Movimiento. $ x=x+v$. Es decir, se actualiza la posición del vehículo con su nueva velocidad $v$ (la calculada en la regla 3).\\
+ 
+Al tratarse de un Autómata Celular, debe recordarse que estas reglas se aplican a todos los vehículos de manera homogénea y en paralelo (al mismo tiempo).El Autómata Celular del modelo Na-Sch tendrá una rejilla unidimensional, con $L$ células. Las vecindades están dadas por la interacción de los vehículos y sus predecesores (las brechas). Los estados posibles de un vehículo son los enteros entre 0 y $v_{max}$. La función de transición del Autómata Celular está dada por las 4 reglas anteriormente descritas. \cite{trafico}
+ 
+ 
+\subsection{Aplicación de Autómatas Celulares para la descripción de extremos de la precipitación}
+Como se describe en el articulo publicado por la Universidad de Salamanca con el nombre ``APLICACIÓN DE AUTÓMATAS CELULARES PARA LA DESCRIPCIÓN DE EXTREMOS DE LA PRECIPITACIÓN'' una posible aplicación para los Autómatas Celulares es la descripción de la ocurrencia de extremos de precipitación. Las series temporales de precipitación presentan algunos grados de periodicidad o fluctuaciones debidas a variabilidad climática natural. Una vez filtradas estas componentes mediante técnicas espectrales, aplicamos el modelo propuesto de Autómatas Celulares a la serie residual con el fin de caracterizar las rachas secas y húmedas.
+Nos Abstraeremos de la parte climatológica para centrarnos solo en la parte de configuración y utilización de los autómatas para obtener la descripción de los extremos de las precipitaciones.\\
+
+Se utilizan dos Autómatas Celulares uno probabilístico y otro
+determinístico y ambos con un espacio celular formado por 12 células, que representan los meses del año. El conjunto de estados será binario, 0 o 1. La función de transición consta de dos fases, una determinista y otra probabilística. La configuración inicial se toma a partir de valores reales previamente obtenidos. \\
+
+Con este estudio se consiguió determinar con más de un 60 por ciento de exactitud la precisión del Autómata Celular para la descripción de extremos de la precipitación, en comparación con los datos que se tenían almacenados.
+
+\section{Autómatas Celulares utilizando algoritmos genéticos}
+Los algoritmos genéticos  son métodos de búsqueda en el espacio de soluciones de un problema basados en el mecanismo de la selección natural o la lucha por la supervivencia \cite{koza}. \\
+
+Mediante la utilización de algoritmos genéticos las soluciones al problema se codifican como una secuencia de símbolos, como un programa genético, generando una población inicial de estas soluciones. Generación tras generación, las soluciones más aptas, que más se acercan al resultado final, sobreviven y se reproducen, haciendo cruzar entre sí sus cadenas de símbolos, introduciendo nuevos individuos en la población. Tras un número determinado de generaciones, se pretende obtener una población de soluciones con al menos un individuo capaz de llegar al resultado deseado para el problema.\\
+
+En el mundo natural, se dice que un proceso está dirigido por una evolución cuando se satisfacen las siguientes cuatro condiciones.\\
+\begin{enumerate}
+\item Una entidad debe tener la capacidad de reproducirse.
+\item Debe existir una población de tales entidades.
+\item Debe existir algún tipo de variedad entre las entidades de dicha población.
+\item Debe existir alguna diferencia en la capacidad de sobrevivir en el entorno asociada a dicha variedad.
+\end{enumerate}
+
+En la naturaleza, la variedad se manifiesta en las diferencias entre cromosomas en una población determinada. Esta variación en el genotipo se hace patente en la estructura y comportamiento del organismo, es decir, en la expresión externa del genotipo llamada ``\textit{fenotipo}'', lo que influye en la capacidad de adaptarse al medio.\\
+
+Los individuos que mejor se adaptan tienen más probabilidades de sobrevivir y reproducirse, y, por lo tanto, de llegar a sus descendientes esas capacidades o variaciones en su genotipo que le han proporcionado un mayor grado de adaptación. A lo largo de sucesivas generaciones, la estructura y comportamiento de los individuos de la población hace que éstos se adapten perfectamente al entorno.\\
+
+De este modo cualquier problema de adaptación puede observarse bajo el prisma genético. Este tipo de proceso evolutivo se denominó \textit{algoritmo genético}.\\
+
+Los algoritmos genéticos son un tipo de algoritmos matemáticos altamente paralelos, que transforman un conjunto de objetos (población) representados matemáticamente cada uno de ellos mediante una cadena de símbolos (genotipo) asociada a una determinada medida de adaptación al medio, en otra población distinta, siguiente generación, mediante la aplicación del principio de supervivencia del más fuerte en términos de adaptación.\\
+
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% SI HACE FALTA MAS TAMAÑO RELLENAR CON LA EXPLICACION
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+A través de observaciones se ha podido determinar cómo la región de transición entre el orden y el caos da lugar a los comportamientos más complejos, de hecho la vida surge al borde del caos, y es la selección natural la que alcanza y sostiene este estado. De este modo de demuestra la relación directa entre complejidad y selección natural, siendo esta última la que consigue mantener dicha complejidad de los organismos en los valores adecuados. Si la complejidad se reduce el organismo no es capaz de desarrollar funciones avanzadas, si el organismo exhibe un comportamiento caótico tampoco es capaz de llevar a cabo dichas funciones y, en cualquier caso, no sobrevivirá a lo largo de las generaciones. Al igual que en los sistemas naturales, existe una relación directa entre la complejidad de los organismos artificiales y la selección artificial basada en los algoritmos genéticos, siendo éstos capaces de dirigir la evolución a conveniencia, para generar individuos aptos para la resolución de un problema, como se ha descrito con anterioridad.\\
+
+Los Autómatas Celulares se han descrito como modelos matemáticos masivamente paralelos, extremadamente simples en su concepción, pero capaces de llevar a cabo en algunos casos conductas sumamente complejas y no predecibles a priori, a menos que se efectúe una simulación debido al enorme número de iteraciones entre las células.\\
+
+Es, por esta circunstancia, prácticamente imposible, diseñar a mano un conjunto de reglas para que un Autómata Celular realice una tarea compleja, es decir, programar la tabla de reglas del autómata. La mayoría de los descubrimientos relativos a los comportamientos de configuraciones determinadas de Autómatas Celulares, regidos por una tabla de reglas determinada, es fruto casual de la observación de la simulación, como en el caso de los planeadores, pero en ningún caso concebida a priori por el diseñador.\\
+
+Los Autómatas Celulares están definidos por su tabla de reglas. Esta tabla de reglas constituiría la cadena genética, substrato del trabajo de los algoritmos genéticos, que, a su vez, conservarían aquellas partes de la cadena, o nociones, útiles para llevar a cabo la tarea deseada, de generación en generación mediante la aplicación de los operadores genéticos como se ha explicado anteriormente, obteniendo nuevos individuos en los que se sintetizan las nociones de generaciones pasadas que aportan una mayor adaptación a los organismos, en este caso, a los Autómatas Celulares.\\
+
+Puesto que la programación de la tabla de reglas de un Autómata Celular que lleve a cabo una función determinada es una tarea demasiado ardua para el ser humano, los algoritmos genéticos constituyen una herramienta ideal que puede ser empleada con éxito para obtener dicha tabla, y por tanto, el Autómata Celular que lleve a cabo una función compleja. Por lo tanto un Autómata Celular dotado de computación universal podría ejecutar en paralelo todos los programas posibles.. La idea del Autómata Celular como un sistema de computación se resume de la siguiente forma: a partir de una configuración inicial, que representa los datos de entrada, se puede efectuar cierto proceso, determinado por la tabla de reglas del Autómata Celular, para obtener una configuración final, que representa el resultado.\\
+
+Uno de los primeros investigadores en generar Autómatas Celulares con algoritmos genéticos fue el físico \textit{Norman Packard}. Examinó la frecuencia de las reglas generadas como función del parámetro e interpretó los resultados como evidencias de dos hipótesis:
+\begin{enumerate}
+\item Los Autómatas Celulares capaces de llevar a cabo cálculos complejos, se sitúan cerca de valores críticos que determinan transiciones de fase entre regímenes ordenados y caóticos.
+\item La evolución tiende a seleccionar Autómatas Celulares con valores cercanos a dichos valores críticos.
+\end{enumerate}
+
+Generalmente en la experimentación de la aplicación de algoritmos genéticos a los Autómatas Celulares se ha utilizado Autómatas Celulares unidimensionales o lineales con una vecindad de 3 y dos posibles estados por célula y el cálculo a implementar ha sido el problema de clasificación de la mayoría. Este problema es un medio para estudiar cómo pueden llevarse a cabo cálculos complejos sobre grandes áreas mediante reglas que operan por iteracciones a distancias relativamente pequeñas. La configuración inicial de un conjunto de células en un autómata biestado unidimensional conforma los datos de entrada para el cálculo. El objetivo es obtener una tabla de reglas que defina un Autómata Celular capaz de clasificar correctamente la configuración inicial, haciéndola tender, tras un número finito de pasos, a todo 1 si había una mayoría de 1 en la configuración inicial, o a todo 0, si había una mayoría de 0.\\
+
+Siendo $r_0$, el porcentaje de 1 en la configuración inicial,  si $r_0 > 0.5$ la configuración final debe ser todo 1, en caso de que $r_0 > 0.5$ la configuración final debe ser todo 0, y en caso que $r_0$ sea exactamente 0, el resultado es indeterminado. Estos Autómatas Celulares consiguieron una eficacia un poco superior al 80\%. Packard intentó aplicar el algoritmo genético al problema de clasificación de la mayoría para obtener un Autómata Celular que mejorase estos resultados con las siguiente pasos para cada generación:
+\begin{enumerate}
+\item Se calcula el grado de adaptación de cada Autómata Celular.
+\item Se clasifica a la población en base a su grado de adaptación.
+\item Una parte de los Autómatas Celulares con peor grado de adaptación se eliminan del sistema.
+\item Éstos últimos son sustituidos por otros nuevos obtenidos aplicando las operaciones de cruzamiento y mutación a partir de los más optimos.
+\end{enumerate}
+
+Para evitar al convergencia prematura se introdujo un sistema que reforzase la diversidad decrementando artificialmente el grado de adaptación de aquellos individuos con tablas de reglas demasiado parecidas a otras ya existentes. Packard llegó a unos resultados que le permitieron aseveras que los Autómatas Celulares con mejor comportamiento eran aquellos con valores cercanos a las transiciones de ordenado a caótico.\\
+
+\newpage
+Sin embargo más adelante Melanie Mitchell demostraró que el desarrollo de Parckard era incorrecto o que no había documentando todo su proceso, ya que no consiguieron
+\begin{wrapfigure}{l}{0.4\linewidth}
+\centering
+\includegraphics[scale=1]{imagenes/melani.jpg}
+\caption{Melanie Mitchell}
+\label{fig:melanie}
+\end{wrapfigure}
+
+ replicar sus resultados con el mismo grado de satisfacción. De esta forma se determinó que la relación entre la capacidad computacional de un Autómata Celular no es directa, aunque sí lo es la relación entre el y el comportamiento dinámico del autómata.\\
+$\enspace \enspace \enspace \enspace \enspace$\\
+$\enspace \enspace \enspace \enspace \enspace$\\
+
+Melanie Mitchell \cite{melanie} utilizo otra técnica para aplicar los algoritmos genéticos a la generación de Autómatas Celulares:
+\begin{enumerate}
+\item  Se escoge al azar una población inicial de M cromosomas, que representan los Autómatas Celulares mediante su tabla de reglas.
+\item El grado de adaptación de un Autómata Celular de la población se calcula escogiendo al azar I configuraciones iniciales sobre cuadricula e iterando el Autómata Celular sobre cada configuración inicial hasta llegar a un punto fijo o hasta consumir un máximo de ciclos de tiempo pre establecidos.
+\item Se determina si la configuración final alcanzada es correcta para la tarea deseada, en este caso, si es todo 0 cuando $r_0 < 0.5$ o todo 1 cuando $r_0 > 0.5$. El grado de adaptación es la fracción de la configuración inicial correctamente clasificadas. Las configuraciones parcialmente correctas no son tomadas en cuenta.
+\item Para cada generación: 
+\begin{itemize}
+\item Se crea un nuevo conjunto de I.
+\item Se calcula el grado de adaptación de cada autómata.
+\item Se ordenan según dicho grado de adaptación.
+\item Se escoge un número E de Autómatas Celulares situados entre la élite, con alto grado de adaptación y se copian a la siguiente generación.
+\item Los elementos M - E restantes se forman por cruzamiento entre los más aptos, y aplicando la operación de mutación con una determinada probabilidad.
+\end{itemize}
+\end{enumerate}
+
+El resultado obtenido fue la generación de unos Autómatas Celulares que desarrollaron distintas estrategias para llevar a cabo la tarea, consiguiendo en el mejor de los casos un éxito 77.55\% de las clasificaciones correctas, menos que los obtenidos anteriormente por otros informáticos mucho antes.\\
+
+Pero se siguió esta linea de avance de utilizar algoritmos genéticos para desarrollar Autómatas Celulares hasta el punto que se ha obtenido hasta un 86.3\% de éxito con la utilización de técnicas de coevolución.\\
+
+En definitiva la metodología de programación convencional es, naturalmente, de poca utilidad para un sistema de computación basado en un Autómata Celular. El desarrollo de una nueva metodología es difícil y los algoritmos genéticos puede ser una herramienta fundamental en la búsqueda, puesto que la principal dificultad para los Autómatas Celulares es la computación en paralelo y de ello su programación. Por ello se argumentan desde varios expertos en Autómatas Celulares se debe perseguir que el autómata realice tareas concretas para mejorar su éxito y buscar Autómatas Celulares universales, como en El Juego de la Vida. Por ello la atención actual se dirige hacia el desarrollo de Autómatas Celulares que sean capaces de realizar tareas concretas pero complejas como el procesamiento de imágenes, el modelamiento del tráfico, etc.
 
 %------------------------------------------------
 
